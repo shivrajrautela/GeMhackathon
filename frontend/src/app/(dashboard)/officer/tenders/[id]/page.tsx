@@ -187,6 +187,15 @@ export default function BidReviewPage() {
     runNext(backendData);
   };
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading tender details...</p>
+      </div>
+    );
+  }
+
   if (!tender) {
     return (
       <div className="flex flex-col items-center justify-center h-64 space-y-4">
@@ -407,7 +416,7 @@ export default function BidReviewPage() {
                     <div className="text-center space-y-3">
                       <FileText className="h-12 w-12 text-slate-300 mx-auto" />
                       <div className="space-y-1">
-                        <p className="font-semibold text-slate-600">Bid Document — {selectedBidder.companyName}</p>
+                        <p className="font-semibold text-slate-600">Bid Document — {selectedBidder.company_name}</p>
                         <p className="text-xs text-slate-400">PDF viewer will be connected to backend storage</p>
                       </div>
                     </div>

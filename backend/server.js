@@ -419,12 +419,8 @@ app.get('/api/officer/audit', (req, res) => {
 // ==========================================
 // 🏛️ GOVERNMENT MOCK APIs (Phase 4)
 // ==========================================
-// Centralized helper to get gov database
-const getGovDB = () => {
-    const filePath = path.join(__dirname, 'data', 'gov_database.json');
-    if (!fs.existsSync(filePath)) return [];
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-};
+// Uses getGovDB() helper defined at top of file
+
 
 app.get('/api/gov/pan/:number', (req, res) => {
     const record = getGovDB().find(r => r.pan_number === req.params.number);
