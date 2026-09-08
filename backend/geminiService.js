@@ -7,8 +7,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'dummy_key');
 
 async function analyzeBidDocument(base64PdfData, mimeType = "application/pdf") {
     try {
-        // Use Gemini 1.5 Flash - it is extremely fast and natively supports PDFs
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        // Use Gemini 3.6 Flash - it is extremely fast and natively supports PDFs
+        const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
         const prompt = `
         You are an expert government procurement auditor. 
@@ -46,7 +46,7 @@ async function analyzeBidDocument(base64PdfData, mimeType = "application/pdf") {
         return JSON.parse(cleanedText);
     } catch (error) {
         console.error("Gemini AI Error:", error);
-        throw new Error("Failed to analyze document with Gemini AI");
+        throw new Error(`Gemini AI Error: ${error.message}`);
     }
 }
 

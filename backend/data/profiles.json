@@ -1,0 +1,18 @@
+{
+  "d6c9b370-0703-493f-bdac-a3e1fdb8a3af": {
+    "companyName": "Sharma Industrial Solution",
+    "ownerName": "Ankit  Sharma",
+    "email": "ankit.sharma@sharmaindustrial.example",
+    "phone": "9000010001",
+    "address": "NASIK",
+    "city": "Nasik",
+    "state": "Maharashtra ",
+    "pincode": "422001",
+    "gstin": "DEMO-GST-0001",
+    "pan": "DEMO-PAN-000Z",
+    "udyam": "DEMO-UDYAM-0001",
+    "turnover": "4.8",
+    "employeeCount": "42",
+    "category": "Small"
+  }
+}
