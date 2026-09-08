@@ -1,80 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Activity, ShieldCheck, AlertTriangle, FileSearch, Lock,
   Send, Download, CheckCircle, XCircle, Clock, Eye,
-  FileText, Cpu, Hash
+  FileText, Cpu, Hash, Loader2
 } from "lucide-react";
 
-// ─── Mock Audit Logs ─────────────────────────────────────────────────────────
-const mockAuditLogs = [
-  {
-    id: "LOG-001",
-    time: "2026-09-08 22:41:03",
-    actor: "AI Engine",
-    event: "AI_ANALYSIS_COMPLETE",
-    detail: "TND-2026-001 · TechCorp India — All 8 Gov API checks passed",
-    severity: "Info",
-    hash: "a3f8c2d1e4b5f9a0c7d3e2f1b8a4c6d9e0f2b5a1c4d7e8f3b6a9c2d5e8f1b4",
-    tender: "TND-2026-001",
-  },
-  {
-    id: "LOG-002",
-    time: "2026-09-08 21:58:47",
-    actor: "AI Engine",
-    event: "DOCUMENT_TAMPERING_DETECTED",
-    detail: "TND-2026-001 · Shady Supplies LLC — PDF metadata altered, GSTIN mismatch",
-    severity: "Critical",
-    hash: "b7e2f5a8c1d4e7f0b3c6a9d2e5f8b1c4a7d0e3f6b9c2d5e8f1b4c7a0d3e6f9",
-    tender: "TND-2026-001",
-  },
-  {
-    id: "LOG-003",
-    time: "2026-09-08 21:30:12",
-    actor: "AI Engine",
-    event: "GOV_API_VERIFICATION",
-    detail: "TND-2026-001 · Globex IT Solutions — Udyam registration expired",
-    severity: "Warning",
-    hash: "c1d4e7f0b3c6a9d2e5f8b1c4a7d0e3f6b9c2d5e8f1b4c7a0d3e6f9b2c5a8d1",
-    tender: "TND-2026-001",
-  },
-  {
-    id: "LOG-004",
-    time: "2026-09-08 20:15:38",
-    actor: "System",
-    event: "BID_SUBMISSION_RECEIVED",
-    detail: "TND-2026-002 · SunPower Renewables — New bid document uploaded",
-    severity: "Info",
-    hash: "d5e8f1b4c7a0d3e6f9b2c5a8d1e4f7b0c3a6d9e2f5b8c1d4e7f0b3c6a9d2e5",
-    tender: "TND-2026-002",
-  },
-  {
-    id: "LOG-005",
-    time: "2026-09-08 19:02:21",
-    actor: "AI Engine",
-    event: "RISK_SCORE_CALCULATED",
-    detail: "TND-2026-002 · SunPower Renewables — Compliance score: 88%",
-    severity: "Info",
-    hash: "e9f2b5a8c1d4e7f0b3c6a9d2e5f8b1c4a7d0e3f6b9c2d5e8f1b4c7a0d3e6f9",
-    tender: "TND-2026-002",
-  },
-  {
-    id: "LOG-006",
-    time: "2026-09-08 17:44:09",
-    actor: "Procurement Officer",
-    event: "TENDER_OPENED_FOR_REVIEW",
-    detail: "TND-2026-001 — Officer accessed bid review panel",
-    severity: "Info",
-    hash: "f3c6a9d2e5f8b1c4a7d0e3f6b9c2d5e8f1b4c7a0d3e6f9b2c5a8d1e4f7b0c3",
-    tender: "TND-2026-001",
-  },
-];
+type AuditLog = {
+  id: string;
+  timestamp: string;
+  bid_id: string;
+  action: string;
+  officer_id: string;
+  previous_hash: string;
+  hash: string;
+};
 
-type Log = typeof mockAuditLogs[0];
+const severityFromAction = (action: string) => {
+  if (action === "REJECTED") return "Critical";
+  if (action === "APPROVED") return "Info";
+  return "Warning";
+};
 
 const severityConfig: Record<string, { color: string; icon: React.ReactNode; label: string }> = {
   Critical: {
@@ -94,38 +44,49 @@ const severityConfig: Record<string, { color: string; icon: React.ReactNode; lab
   },
 };
 
-const eventIcon = (event: string) => {
-  if (event.includes("TAMPERING") || event.includes("CRITICAL")) return <AlertTriangle className="h-4 w-4 text-red-600" />;
-  if (event.includes("COMPLETE") || event.includes("SCORE"))     return <Cpu className="h-4 w-4 text-blue-600" />;
-  if (event.includes("SUBMISSION"))                               return <FileText className="h-4 w-4 text-green-600" />;
-  if (event.includes("VERIFICATION"))                            return <ShieldCheck className="h-4 w-4 text-amber-600" />;
-  if (event.includes("CVC"))                                      return <Send className="h-4 w-4 text-purple-600" />;
+const eventIcon = (action: string) => {
+  if (action === "REJECTED") return <XCircle className="h-4 w-4 text-red-600" />;
+  if (action === "APPROVED") return <CheckCircle className="h-4 w-4 text-green-600" />;
   return <Activity className="h-4 w-4 text-slate-500" />;
 };
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 export default function AuditLogsPage() {
-  const [logs, setLogs] = useState(mockAuditLogs);
+  const [logs, setLogs] = useState<AuditLog[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showCVCModal, setShowCVCModal] = useState(false);
   const [cvcSent, setCVCSent] = useState(false);
   const [expandedHash, setExpandedHash] = useState<string | null>(null);
 
-  const criticalCount = logs.filter(l => l.severity === "Critical").length;
-  const warningCount  = logs.filter(l => l.severity === "Warning").length;
-  const infoCount     = logs.filter(l => l.severity === "Info").length;
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/officer/audit');
+        const json = await res.json();
+        if (json.success) setLogs(json.data.reverse()); // newest first
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLogs();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading audit logs...</p>
+      </div>
+    );
+  }
+
+  const criticalCount = logs.filter(l => severityFromAction(l.action) === "Critical").length;
+  const approvedCount = logs.filter(l => l.action === "APPROVED").length;
+  const totalCount    = logs.length;
 
   const handleSendCVC = () => {
-    const newLog: Log = {
-      id: `LOG-${String(logs.length + 1).padStart(3, "0")}`,
-      time: new Date().toLocaleString("sv-SE").replace("T", " "),
-      actor: "Procurement Officer",
-      event: "CVC_AUDIT_REPORT_DISPATCHED",
-      detail: "Full audit trail sent to Central Vigilance Commission for final bid award verification",
-      severity: "Info",
-      hash: Array.from({ length: 64 }, () => "0123456789abcdef"[Math.floor(Math.random() * 16)]).join(""),
-      tender: "ALL",
-    };
-    setLogs(prev => [newLog, ...prev]);
     setCVCSent(true);
     setShowCVCModal(false);
   };
@@ -138,7 +99,7 @@ export default function AuditLogsPage() {
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-slate-900">Cryptographic Audit Logs</h2>
           <p className="text-slate-500 mt-1 text-sm">
-            Immutable, tamper-proof record of every AI verification, API call, and officer action — secured with SHA-256 hashes.
+            Immutable, tamper-proof record of every officer decision — secured with SHA-256 hash chain.
           </p>
         </div>
         <div className="flex items-center gap-2 shrink-0 mt-1">
@@ -165,26 +126,26 @@ export default function AuditLogsPage() {
         <Card className="border-l-4 border-l-red-500 shadow-sm">
           <CardContent className="pt-4 pb-4 flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Critical Events</p>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Rejections</p>
               <p className="text-3xl font-bold text-red-600">{criticalCount}</p>
             </div>
-            <AlertTriangle className="h-8 w-8 text-red-300" />
+            <XCircle className="h-8 w-8 text-red-300" />
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-amber-500 shadow-sm">
+        <Card className="border-l-4 border-l-green-600 shadow-sm">
           <CardContent className="pt-4 pb-4 flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Warnings</p>
-              <p className="text-3xl font-bold text-amber-600">{warningCount}</p>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Approvals</p>
+              <p className="text-3xl font-bold text-green-700">{approvedCount}</p>
             </div>
-            <AlertTriangle className="h-8 w-8 text-amber-300" />
+            <CheckCircle className="h-8 w-8 text-green-300" />
           </CardContent>
         </Card>
         <Card className="border-l-4 border-l-blue-600 shadow-sm">
           <CardContent className="pt-4 pb-4 flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Info Events</p>
-              <p className="text-3xl font-bold text-blue-700">{infoCount}</p>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Total Events</p>
+              <p className="text-3xl font-bold text-blue-700">{totalCount}</p>
             </div>
             <Activity className="h-8 w-8 text-blue-300" />
           </CardContent>
@@ -221,74 +182,83 @@ export default function AuditLogsPage() {
         </CardHeader>
 
         <CardContent className="p-0 divide-y divide-slate-100">
-          {logs.map((log) => {
-            const sev = severityConfig[log.severity] ?? severityConfig["Info"];
-            const isExpanded = expandedHash === log.id;
-            return (
-              <div
-                key={log.id}
-                className={`px-6 py-4 hover:bg-slate-50 transition-colors ${
-                  log.severity === "Critical" ? "bg-red-50/30 hover:bg-red-50" : ""
-                }`}
-              >
-                <div className="flex items-start gap-4">
-
-                  {/* Event Icon */}
-                  <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                    log.severity === "Critical" ? "bg-red-100" :
-                    log.severity === "Warning"  ? "bg-amber-100" : "bg-blue-100"
-                  }`}>
-                    {eventIcon(log.event)}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0 space-y-1.5">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs text-slate-400">{log.id}</span>
-                      <Badge variant="outline" className={`flex items-center text-xs ${sev.color}`}>
-                        {sev.icon}{sev.label}
-                      </Badge>
-                      <span className="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
-                        {log.event}
-                      </span>
+          {logs.length === 0 ? (
+            <div className="px-6 py-12 text-center text-slate-500 font-medium">
+              No audit log entries yet. Approve or reject a bid to generate the first entry.
+            </div>
+          ) : (
+            logs.map((log) => {
+              const sev = severityConfig[severityFromAction(log.action)] ?? severityConfig["Info"];
+              const isExpanded = expandedHash === log.id;
+              return (
+                <div
+                  key={log.id}
+                  className={`px-6 py-4 hover:bg-slate-50 transition-colors ${
+                    log.action === "REJECTED" ? "bg-red-50/30 hover:bg-red-50" : ""
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                      log.action === "REJECTED" ? "bg-red-100" : "bg-green-100"
+                    }`}>
+                      {eventIcon(log.action)}
                     </div>
 
-                    <p className="text-sm font-semibold text-slate-800">{log.detail}</p>
+                    <div className="flex-1 min-w-0 space-y-1.5">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-mono text-xs text-slate-400">{log.id}</span>
+                        <Badge variant="outline" className={`flex items-center text-xs ${sev.color}`}>
+                          {sev.icon}{sev.label}
+                        </Badge>
+                        <span className="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
+                          BID_{log.action}
+                        </span>
+                      </div>
 
-                    <div className="flex items-center gap-4 text-xs text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" /> {log.time}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Eye className="h-3 w-3" /> {log.actor}
-                      </span>
-                      {log.tender !== "ALL" && (
-                        <span className="font-mono font-semibold text-blue-600">{log.tender}</span>
+                      <p className="text-sm font-semibold text-slate-800">
+                        Bid <span className="font-mono text-blue-700">{log.bid_id}</span> was <span className={log.action === "REJECTED" ? "text-red-700" : "text-green-700"}>{log.action}</span>
+                      </p>
+
+                      <div className="flex items-center gap-4 text-xs text-slate-500">
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" /> {new Date(log.timestamp).toLocaleString()}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Eye className="h-3 w-3" /> {log.officer_id}
+                        </span>
+                      </div>
+
+                      {/* SHA-256 Hash — collapsible */}
+                      <div
+                        className="flex items-center gap-2 cursor-pointer group"
+                        onClick={() => setExpandedHash(isExpanded ? null : log.id)}
+                      >
+                        <Hash className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                        <span className={`font-mono text-xs transition-all ${
+                          isExpanded
+                            ? "text-slate-700 break-all"
+                            : "text-slate-400 truncate max-w-xs group-hover:text-blue-600"
+                        }`}>
+                          {isExpanded ? log.hash : `${log.hash.slice(0, 32)}...`}
+                        </span>
+                        <span className="text-xs text-blue-500 group-hover:underline shrink-0">
+                          {isExpanded ? "collapse" : "show hash"}
+                        </span>
+                      </div>
+
+                      {/* Previous Hash (chain proof) */}
+                      {isExpanded && (
+                        <div className="flex items-center gap-2 text-xs text-slate-400 mt-1">
+                          <Lock className="h-3 w-3 shrink-0" />
+                          <span className="font-mono break-all">prev: {log.previous_hash.slice(0, 32)}...</span>
+                        </div>
                       )}
-                    </div>
-
-                    {/* SHA-256 Hash — collapsible */}
-                    <div
-                      className="flex items-center gap-2 cursor-pointer group"
-                      onClick={() => setExpandedHash(isExpanded ? null : log.id)}
-                    >
-                      <Hash className="h-3.5 w-3.5 text-slate-400 shrink-0" />
-                      <span className={`font-mono text-xs transition-all ${
-                        isExpanded
-                          ? "text-slate-700 break-all"
-                          : "text-slate-400 truncate max-w-xs group-hover:text-blue-600"
-                      }`}>
-                        {isExpanded ? log.hash : `${log.hash.slice(0, 32)}...`}
-                      </span>
-                      <span className="text-xs text-blue-500 group-hover:underline shrink-0">
-                        {isExpanded ? "collapse" : "show hash"}
-                      </span>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </CardContent>
       </Card>
 
