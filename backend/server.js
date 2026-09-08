@@ -3,12 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const crypto = require('crypto'); // Built-in Node.js library, no install needed
 const supabase = require('./supabaseClient');
+const { analyzeBidDocument } = require('./geminiService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Increase payload limit for base64 PDF uploads
 app.use(cors()); 
-app.use(express.json()); 
+app.use(express.json({ limit: '10mb' })); 
 
 // ==========================================
 // UTILITY: SHA-256 Cryptographic Hash Generator
@@ -181,6 +183,45 @@ app.get('/api/audit-logs', async (req, res) => {
     const { data, error } = await supabase.from('audit_logs').select('*').order('created_at', { ascending: false });
     if (error) return res.status(500).json({ error: error.message });
     res.json({ success: true, data });
+});
+
+// ==========================================
+// 🧠 REAL GEMINI AI INTEGRATION
+// ==========================================
+app.post('/api/run-ai-analysis', async (req, res) => {
+    const { bid_id, pdf_base64 } = req.body;
+
+    if (!process.env.GEMINI_API_KEY) {
+        return res.status(500).json({ error: "Missing GEMINI_API_KEY in backend/.env" });
+    }
+
+    if (!pdf_base64) {
+        return res.status(400).json({ error: "No PDF data provided" });
+    }
+
+    try {
+        console.log(`\n🤖 Starting Gemini AI Analysis for bid: ${bid_id}...`);
+        
+        // 1. Pass the PDF to Gemini to extract JSON data
+        const extractedData = await analyzeBidDocument(pdf_base64);
+        console.log("📄 Extracted Data from Gemini:", extractedData);
+
+        // 2. Here you would normally fetch the "ground truth" from the mock Gov API
+        // For example, finding the company by the extracted GSTIN:
+        // const { data: govData } = await supabase.from('mock_government_records').eq('gstin', extractedData.gstin).single();
+
+        // 3. For the demo, we'll return the AI's extracted data so the frontend can compare it
+        res.json({
+            success: true,
+            bid_id,
+            extractedData,
+            message: "AI OCR Analysis Complete"
+        });
+
+    } catch (err) {
+        console.error("❌ AI Analysis Error:", err);
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // ==========================================

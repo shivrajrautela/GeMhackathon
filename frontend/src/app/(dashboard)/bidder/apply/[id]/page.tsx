@@ -53,7 +53,19 @@ export default function ApplicationPage() {
   };
 
   const handleSubmit = () => {
-    setStep("submitted");
+    if (uploadedFile) {
+      // Convert file to base64 for the Gemini AI backend to process later
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64String = (event.target?.result as string).split(',')[1]; // Remove data URL prefix
+        localStorage.setItem("gem_demo_pdf_base64", base64String);
+        console.log("PDF saved to localStorage for AI Analysis!");
+        setStep("submitted");
+      };
+      reader.readAsDataURL(uploadedFile);
+    } else {
+      setStep("submitted");
+    }
   };
 
   // ─── STEP: SUBMITTED ────────────────────────────────────────────────

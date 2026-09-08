@@ -93,47 +93,75 @@ export default function BidReviewPage() {
   const [checkStatuses, setCheckStatuses] = useState<Record<string, CheckStatus>>({});
   const [activeCheckIdx, setActiveCheckIdx] = useState(-1);
   const [showSummary, setShowSummary] = useState(false);
+  const [geminiData, setGeminiData] = useState<any>(null); // Store real Gemini result
 
   const resetAI = () => {
     setAIState("idle");
     setCheckStatuses({});
     setActiveCheckIdx(-1);
     setShowSummary(false);
+    setGeminiData(null);
   };
 
-  const runAIAnalysis = () => {
+  const runAIAnalysis = async () => {
     if (!selectedBidder || aiState !== "idle") return;
     setAIState("ocr");
     setCheckStatuses({});
     setActiveCheckIdx(-1);
     setShowSummary(false);
 
-    // After 2s OCR phase → start checks
-    setTimeout(() => {
-      setAIState("checking");
-      let idx = 0;
-
-      const runNext = () => {
-        if (idx >= GOV_API_CHECKS.length) {
-          setActiveCheckIdx(-1);
-          setShowSummary(true);
-          setAIState("done");
-          return;
+    try {
+      // 1. Fetch the uploaded PDF from localStorage (from Bidder flow)
+      const pdfBase64 = localStorage.getItem("gem_demo_pdf_base64");
+      
+      if (pdfBase64) {
+        // Send to real backend!
+        const res = await fetch("http://localhost:5000/api/run-ai-analysis", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            bid_id: selectedBidder.id,
+            pdf_base64: pdfBase64
+          })
+        });
+        
+        const data = await res.json();
+        if (data.success && data.extractedData) {
+          setGeminiData(data.extractedData);
+        } else {
+          console.error("Gemini failed, falling back to mock summary", data.error);
         }
-        const check = GOV_API_CHECKS[idx];
-        setActiveCheckIdx(idx);
-        setCheckStatuses(prev => ({ ...prev, [check.key]: "running" }));
+      } else {
+        console.warn("No PDF found in localStorage. Proceeding with mock animation.");
+      }
+    } catch (err) {
+      console.error("Error connecting to AI backend", err);
+    }
 
-        setTimeout(() => {
-          const result = getCheckResult(selectedBidder, check.key);
-          setCheckStatuses(prev => ({ ...prev, [check.key]: result }));
-          idx++;
-          setTimeout(runNext, 300);
-        }, 700);
-      };
+    // 2. Start the visual checks animation
+    setAIState("checking");
+    let idx = 0;
 
-      runNext();
-    }, 2000);
+    const runNext = () => {
+      if (idx >= GOV_API_CHECKS.length) {
+        setActiveCheckIdx(-1);
+        setShowSummary(true);
+        setAIState("done");
+        return;
+      }
+      const check = GOV_API_CHECKS[idx];
+      setActiveCheckIdx(idx);
+      setCheckStatuses(prev => ({ ...prev, [check.key]: "running" }));
+
+      setTimeout(() => {
+        const result = getCheckResult(selectedBidder, check.key);
+        setCheckStatuses(prev => ({ ...prev, [check.key]: result }));
+        idx++;
+        setTimeout(runNext, 300);
+      }, 700);
+    };
+
+    runNext();
   };
 
   if (!tender) {
@@ -490,12 +518,12 @@ export default function BidReviewPage() {
 
                   {/* ── AI Summary ── */}
                   {showSummary && (
-                    <div className={`mt-4 rounded-lg border p-5 space-y-3 ${
+                    <div className={`mt-4 rounded-lg border p-5 space-y-4 ${
                       selectedBidder.riskTag === "High"   ? "border-red-300 bg-red-50" :
                       selectedBidder.riskTag === "Medium" ? "border-amber-300 bg-amber-50" :
                       "border-green-300 bg-green-50"
                     }`}>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 border-b border-slate-200/50 pb-3">
                         <Sparkles className={`h-5 w-5 ${
                           selectedBidder.riskTag === "High"   ? "text-red-600" :
                           selectedBidder.riskTag === "Medium" ? "text-amber-600" : "text-green-600"
@@ -504,7 +532,7 @@ export default function BidReviewPage() {
                           selectedBidder.riskTag === "High"   ? "text-red-800" :
                           selectedBidder.riskTag === "Medium" ? "text-amber-800" : "text-green-800"
                         }`}>
-                          Gemini AI — Verification Summary
+                          Gemini 1.5 Flash — Live Verification Summary
                         </p>
                         <Badge variant="outline" className={`ml-auto text-xs font-bold ${
                           selectedBidder.riskTag === "High"   ? "bg-red-100 text-red-800 border-red-300" :
@@ -514,12 +542,36 @@ export default function BidReviewPage() {
                           {selectedBidder.complianceScore}% Compliance
                         </Badge>
                       </div>
-                      <p className={`text-sm leading-relaxed font-medium ${
-                        selectedBidder.riskTag === "High"   ? "text-red-900" :
-                        selectedBidder.riskTag === "Medium" ? "text-amber-900" : "text-green-900"
-                      }`}>
-                        {getAISummary(selectedBidder)}
-                      </p>
+
+                      {/* Show Real Gemini Data if available */}
+                      {geminiData ? (
+                        <div className="space-y-3">
+                          <p className="text-sm font-semibold text-slate-800">Raw Data Extracted from Document:</p>
+                          <div className="grid grid-cols-2 gap-2 text-xs bg-white rounded border border-slate-200 p-3 shadow-inner">
+                            <div><span className="text-slate-500 block">Company Name</span><span className="font-semibold text-slate-900">{geminiData.companyName}</span></div>
+                            <div><span className="text-slate-500 block">GSTIN</span><span className="font-mono text-slate-900">{geminiData.gstin}</span></div>
+                            <div><span className="text-slate-500 block">PAN</span><span className="font-mono text-slate-900">{geminiData.pan}</span></div>
+                            <div><span className="text-slate-500 block">Turnover</span><span className="font-semibold text-slate-900">{geminiData.financialTurnover}</span></div>
+                            <div><span className="text-slate-500 block">Udyam No.</span><span className="font-mono text-slate-900">{geminiData.udyamRegistration}</span></div>
+                            <div>
+                              <span className="text-slate-500 block">Tampering Signs</span>
+                              <span className={`font-bold ${geminiData.tamperingSigns ? 'text-red-600' : 'text-green-600'}`}>
+                                {geminiData.tamperingSigns ? "DETECTED" : "None Detected"}
+                              </span>
+                            </div>
+                          </div>
+                          <p className="text-sm font-medium text-slate-700 bg-slate-100 p-3 rounded border border-slate-200 italic">
+                            "{geminiData.summary}"
+                          </p>
+                        </div>
+                      ) : (
+                        <p className={`text-sm leading-relaxed font-medium ${
+                          selectedBidder.riskTag === "High"   ? "text-red-900" :
+                          selectedBidder.riskTag === "Medium" ? "text-amber-900" : "text-green-900"
+                        }`}>
+                          {getAISummary(selectedBidder)}
+                        </p>
+                      )}
 
                       {/* Pass/Fail Summary */}
                       <div className="flex items-center gap-4 pt-1 text-sm font-semibold">
