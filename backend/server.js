@@ -233,6 +233,18 @@ app.get('/api/officer/stats', (req, res) => {
     }
 });
 
+// 1.5. Officer All Bids (Global Queue)
+app.get('/api/officer/bids', (req, res) => {
+    try {
+        const bids = JSON.parse(fs.readFileSync(getBidsFile(), 'utf8'));
+        
+        // Optionally attach tender data here if needed, or send raw
+        res.json({ success: true, data: bids });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // 2. Officer Decision (Approve/Reject) + Audit Log
 app.post('/api/officer/bids/:id/decision', (req, res) => {
     try {

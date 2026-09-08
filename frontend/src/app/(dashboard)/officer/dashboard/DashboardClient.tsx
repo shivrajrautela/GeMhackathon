@@ -204,23 +204,28 @@ export default function DashboardClient({
           </Link>
         </CardHeader>
         <CardContent className="p-0 divide-y divide-slate-100">
-          {recentActivity.map((item) => (
+          {auditLogs.slice(-5).reverse().map((item: any) => (
             <div key={item.id} className="flex items-center gap-4 px-6 py-4 hover:bg-slate-50 transition-colors">
               <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 ${
-                item.type === "danger"  ? "bg-red-100"   :
-                item.type === "success" ? "bg-green-100" : "bg-blue-100"
+                item.action === "REJECTED"  ? "bg-red-100"   :
+                item.action === "APPROVED" ? "bg-green-100" : "bg-blue-100"
               }`}>
-                {item.type === "danger"  && <XCircle    className="h-4 w-4 text-red-600"   />}
-                {item.type === "success" && <CheckCircle className="h-4 w-4 text-green-600" />}
-                {item.type === "info"    && <Activity    className="h-4 w-4 text-blue-600"  />}
+                {item.action === "REJECTED"  && <XCircle    className="h-4 w-4 text-red-600"   />}
+                {item.action === "APPROVED" && <CheckCircle className="h-4 w-4 text-green-600" />}
+                {item.action !== "REJECTED" && item.action !== "APPROVED" && <Activity    className="h-4 w-4 text-blue-600"  />}
               </div>
               <div className="flex-1">
-                <p className="font-semibold text-slate-800 text-sm">{item.event}</p>
-                <p className="text-xs text-slate-500">{item.detail}</p>
+                <p className="font-semibold text-slate-800 text-sm">Bid {item.action}</p>
+                <p className="text-xs text-slate-500">{item.bid_id} · By {item.officer_id}</p>
               </div>
-              <span className="text-xs text-slate-400 shrink-0 whitespace-nowrap">{item.time}</span>
+              <span className="text-xs text-slate-400 shrink-0 whitespace-nowrap">{new Date(item.timestamp).toLocaleTimeString()}</span>
             </div>
           ))}
+          {auditLogs.length === 0 && (
+             <div className="px-6 py-8 text-center text-slate-500 text-sm font-medium">
+               No recent activity recorded yet.
+             </div>
+          )}
         </CardContent>
       </Card>
 
