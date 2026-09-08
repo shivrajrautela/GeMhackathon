@@ -41,20 +41,46 @@ function calculateRiskScore(govtRecord) {
 
 app.get('/api/ping', (req, res) => res.json({ message: "Backend is running! 🚀" }));
 
+const fs = require('fs');
+const path = require('path');
+
 // ==========================================
 // 🏢 TENDERS API
 // ==========================================
-app.get('/api/tenders', async (req, res) => {
-    const { data, error } = await supabase.from('tenders').select('*').order('created_at', { ascending: false });
-    if (error) return res.status(500).json({ error: error.message });
-    res.json({ success: true, data });
+app.get('/api/tenders', (req, res) => {
+    try {
+        const filePath = path.join(__dirname, 'data', 'tenders.json');
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const tenders = JSON.parse(fileData);
+        res.json({ success: true, data: tenders });
+    } catch (err) {
+        console.error('Error reading tenders data:', err);
+        res.status(500).json({ success: false, error: 'Failed to load tenders.' });
+    }
 });
 
-app.post('/api/tenders', async (req, res) => {
-    const { title, description, deadline } = req.body;
-    const { data, error } = await supabase.from('tenders').insert([{ title, description, deadline }]).select();
-    if (error) return res.status(500).json({ error: error.message });
-    res.json({ success: true, data: data[0] });
+app.post('/api/tenders', (req, res) => {
+    // Basic mock implementation for adding a tender to the JSON file
+    try {
+        const filePath = path.join(__dirname, 'data', 'tenders.json');
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const tenders = JSON.parse(fileData);
+        
+        const newTender = {
+            id: `TND-2026-${String(tenders.length + 1).padStart(3, '0')}`,
+            ...req.body,
+            bidsCount: 0,
+            avgRiskScore: 0,
+            status: 'Active'
+        };
+        
+        tenders.unshift(newTender);
+        fs.writeFileSync(filePath, JSON.stringify(tenders, null, 2));
+        
+        res.json({ success: true, data: newTender });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
 });
 
 // ==========================================
