@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { ChevronDown, User, ShieldCheck, LayoutDashboard, FileText, Users, Activity, UploadCloud, Landmark } from "lucide-react";
+import { ChevronDown, User, ShieldCheck, LayoutDashboard, FileText, Users, Activity, UploadCloud, FileCheck, Landmark } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function TopNav() {
@@ -31,6 +31,7 @@ export default function TopNav() {
     { name: 'Dashboard', href: '/bidder/dashboard', icon: LayoutDashboard },
     { name: 'Company Profile', href: '/bidder/profile', icon: Users },
     { name: 'Submit Bid', href: '/bidder/apply', icon: UploadCloud },
+    { name: 'My Submissions', href: '/bidder/submissions', icon: FileCheck },
   ];
 
   const links = isOfficer ? officerLinks : bidderLinks;
