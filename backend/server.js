@@ -84,6 +84,47 @@ app.post('/api/tenders', (req, res) => {
 });
 
 // ==========================================
+// 🏢 PROFILE API (Phase 2)
+// ==========================================
+// We use a local JSON file to guarantee it works for the hackathon demo
+// even if the Supabase tables aren't perfectly configured.
+app.get('/api/profile/:id', (req, res) => {
+    try {
+        const filePath = path.join(__dirname, 'data', 'profiles.json');
+        if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify({}));
+        
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const profiles = JSON.parse(fileData);
+        
+        res.json({ success: true, data: profiles[req.params.id] || null });
+    } catch (err) {
+        console.error('Error reading profile:', err);
+        res.status(500).json({ success: false, error: 'Failed to load profile.' });
+    }
+});
+
+app.post('/api/profile', (req, res) => {
+    try {
+        const { userId, profileData } = req.body;
+        if (!userId) return res.status(400).json({ error: "User ID is required" });
+
+        const filePath = path.join(__dirname, 'data', 'profiles.json');
+        if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify({}));
+        
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const profiles = JSON.parse(fileData);
+        
+        profiles[userId] = profileData;
+        
+        fs.writeFileSync(filePath, JSON.stringify(profiles, null, 2));
+        res.json({ success: true, data: profileData });
+    } catch (err) {
+        console.error('Error saving profile:', err);
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// ==========================================
 // 📄 BIDS API
 // ==========================================
 // All bids (for Officer Dashboard)

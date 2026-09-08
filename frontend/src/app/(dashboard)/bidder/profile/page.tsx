@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Building2, Save, CheckCircle, Phone, Mail, MapPin, FileText, Hash } from "lucide-react";
+import { Building2, Save, CheckCircle, Phone, Mail, MapPin, FileText, Hash, Loader2 } from "lucide-react";
 
 export default function CompanyProfilePage() {
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+
   const [form, setForm] = useState({
     companyName: "",
     ownerName: "",
@@ -26,15 +31,65 @@ export default function CompanyProfilePage() {
     category: "",
   });
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          setUserId(user.id);
+          const res = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+          const json = await res.json();
+          if (json.success && json.data) {
+            setForm(json.data);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load profile:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, []);
+
   const update = (key: string, value: string) => setForm((f) => ({ ...f, [key]: value }));
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Save to localStorage for now; will connect to backend later
-    localStorage.setItem("gem_company_profile", JSON.stringify(form));
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+    if (!userId) {
+      alert("Please log in to save your profile.");
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, profileData: form }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        // Also save to localStorage as a fallback for the /apply page
+        localStorage.setItem("gem_company_profile", JSON.stringify(form));
+        setSaved(true);
+        setTimeout(() => setSaved(false), 3000);
+      }
+    } catch (err) {
+      console.error("Error saving profile:", err);
+    } finally {
+      setSaving(false);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading your profile...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 max-w-3xl">
@@ -168,16 +223,15 @@ export default function CompanyProfilePage() {
 
         {/* Save Button */}
         <div className="flex items-center gap-4">
-          <Button type="submit" className="bg-blue-700 hover:bg-blue-800 px-8">
-            <Save className="mr-2 h-4 w-4" />
-            Save Profile
+          <Button type="submit" disabled={saving} className="bg-blue-700 hover:bg-blue-800">
+            {saving ? (
+              <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving Profile...</>
+            ) : saved ? (
+              <><CheckCircle className="mr-2 h-4 w-4" /> Saved Successfully</>
+            ) : (
+              <><Save className="mr-2 h-4 w-4" /> Save Profile</>
+            )}
           </Button>
-          {saved && (
-            <div className="flex items-center gap-2 text-green-700 font-semibold text-sm">
-              <CheckCircle className="h-4 w-4" />
-              Profile saved successfully!
-            </div>
-          )}
         </div>
       </form>
     </div>
