@@ -209,6 +209,76 @@ app.post('/api/bids', (req, res) => {
 });
 
 // ==========================================
+// 🏛️ GOVERNMENT MOCK APIs (Phase 4)
+// ==========================================
+// Centralized helper to get gov database
+const getGovDB = () => {
+    const filePath = path.join(__dirname, 'data', 'gov_database.json');
+    if (!fs.existsSync(filePath)) return [];
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+};
+
+app.get('/api/gov/pan/:number', (req, res) => {
+    const record = getGovDB().find(r => r.pan_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'PAN not found' });
+    setTimeout(() => res.json({ success: true, data: record.pan_details }), 300); // simulate network delay
+});
+
+app.get('/api/gov/gstin/:number', (req, res) => {
+    const record = getGovDB().find(r => r.gstin === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'GSTIN not found' });
+    setTimeout(() => res.json({ success: true, data: record.gst_details }), 400);
+});
+
+app.get('/api/gov/udyam/:number', (req, res) => {
+    const record = getGovDB().find(r => r.udyam_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'Udyam not found' });
+    setTimeout(() => res.json({ success: true, data: record.udyam_details }), 350);
+});
+
+app.get('/api/gov/mca/cin/:number', (req, res) => {
+    const record = getGovDB().find(r => r.cin_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'CIN not found' });
+    setTimeout(() => res.json({ success: true, data: record.incorporation_details }), 500);
+});
+
+app.get('/api/gov/mca/status/:number', (req, res) => {
+    const record = getGovDB().find(r => r.pan_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'Company not found in MCA' });
+    setTimeout(() => res.json({ success: true, data: record.mca_status }), 450);
+});
+
+app.get('/api/gov/epfo/:number', (req, res) => {
+    const record = getGovDB().find(r => r.epfo_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'EPFO not found' });
+    setTimeout(() => res.json({ success: true, data: record.epfo_details }), 300);
+});
+
+app.get('/api/gov/esic/:number', (req, res) => {
+    const record = getGovDB().find(r => r.esic_number === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'ESIC not found' });
+    setTimeout(() => res.json({ success: true, data: record.esic_details }), 300);
+});
+
+app.get('/api/gov/bis/:number', (req, res) => {
+    const record = getGovDB().find(r => r.bis_license === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'BIS not found' });
+    setTimeout(() => res.json({ success: true, data: record.bis_details }), 400);
+});
+
+app.get('/api/gov/startup/:number', (req, res) => {
+    const record = getGovDB().find(r => r.startup_india_cert === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'Startup Cert not found' });
+    setTimeout(() => res.json({ success: true, data: record.startup_details }), 350);
+});
+
+app.get('/api/gov/nsic/:number', (req, res) => {
+    const record = getGovDB().find(r => r.nsic_cert === req.params.number);
+    if (!record) return res.status(404).json({ success: false, error: 'NSIC Cert not found' });
+    setTimeout(() => res.json({ success: true, data: record.nsic_details }), 300);
+});
+
+// ==========================================
 // 🧠 PHASE 3: AI VERIFICATION ENGINE
 // The "Wow" factor of the entire project
 // ==========================================

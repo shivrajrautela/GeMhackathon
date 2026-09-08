@@ -1,0 +1,3252 @@
+[
+  {
+    "id": "0001",
+    "pan_number": "DEMO-PAN-0001",
+    "pan_details": {
+      "name": "Sharma Industrial Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0001",
+    "gst_details": {
+      "legal_name": "Sharma Industrial Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0001",
+    "udyam_details": {
+      "enterprise_name": "Sharma Industrial Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0001123",
+    "incorporation_details": {
+      "company_name": "Sharma Industrial Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Ankit Sharma"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0001999",
+    "epfo_details": {
+      "establishment_name": "Sharma Industrial Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0001888",
+    "esic_details": {
+      "employer_name": "Sharma Industrial Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0001777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0001666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0001555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0002",
+    "pan_number": "DEMO-PAN-0002",
+    "pan_details": {
+      "name": "Mehta Engineering & Supplies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0002",
+    "gst_details": {
+      "legal_name": "Mehta Engineering & Supplies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0002",
+    "udyam_details": {
+      "enterprise_name": "Mehta Engineering & Supplies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0002123",
+    "incorporation_details": {
+      "company_name": "Mehta Engineering & Supplies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rohan Mehta"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0002999",
+    "epfo_details": {
+      "establishment_name": "Mehta Engineering & Supplies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0002888",
+    "esic_details": {
+      "employer_name": "Mehta Engineering & Supplies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0002777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0002666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0002555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0003",
+    "pan_number": "DEMO-PAN-0003",
+    "pan_details": {
+      "name": "Agarwal Technical Services",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0003",
+    "gst_details": {
+      "legal_name": "Agarwal Technical Services",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0003",
+    "udyam_details": {
+      "enterprise_name": "Agarwal Technical Services",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0003123",
+    "incorporation_details": {
+      "company_name": "Agarwal Technical Services",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Nitin Agarwal"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0003999",
+    "epfo_details": {
+      "establishment_name": "Agarwal Technical Services",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0003888",
+    "esic_details": {
+      "employer_name": "Agarwal Technical Services",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0003777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0003666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0003555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0004",
+    "pan_number": "DEMO-PAN-0004",
+    "pan_details": {
+      "name": "Patel Industrial Equipment",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0004",
+    "gst_details": {
+      "legal_name": "Patel Industrial Equipment",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0004",
+    "udyam_details": {
+      "enterprise_name": "Patel Industrial Equipment",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0004123",
+    "incorporation_details": {
+      "company_name": "Patel Industrial Equipment",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Harsh Patel"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0004999",
+    "epfo_details": {
+      "establishment_name": "Patel Industrial Equipment",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0004888",
+    "esic_details": {
+      "employer_name": "Patel Industrial Equipment",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0004777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0004666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0004555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0005",
+    "pan_number": "DEMO-PAN-0005",
+    "pan_details": {
+      "name": "Deshmukh Engineering Works",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0005",
+    "gst_details": {
+      "legal_name": "Deshmukh Engineering Works",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0005",
+    "udyam_details": {
+      "enterprise_name": "Deshmukh Engineering Works",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0005123",
+    "incorporation_details": {
+      "company_name": "Deshmukh Engineering Works",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Aditya Deshmukh"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0005999",
+    "epfo_details": {
+      "establishment_name": "Deshmukh Engineering Works",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0005888",
+    "esic_details": {
+      "employer_name": "Deshmukh Engineering Works",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0005777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0005666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0005555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0006",
+    "pan_number": "DEMO-PAN-0006",
+    "pan_details": {
+      "name": "Verma Office Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0006",
+    "gst_details": {
+      "legal_name": "Verma Office Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0006",
+    "udyam_details": {
+      "enterprise_name": "Verma Office Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0006123",
+    "incorporation_details": {
+      "company_name": "Verma Office Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Saurabh Verma"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0006999",
+    "epfo_details": {
+      "establishment_name": "Verma Office Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0006888",
+    "esic_details": {
+      "employer_name": "Verma Office Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0006777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0006666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0006555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0007",
+    "pan_number": "DEMO-PAN-0007",
+    "pan_details": {
+      "name": "Kulkarni Electrical Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0007",
+    "gst_details": {
+      "legal_name": "Kulkarni Electrical Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0007",
+    "udyam_details": {
+      "enterprise_name": "Kulkarni Electrical Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0007123",
+    "incorporation_details": {
+      "company_name": "Kulkarni Electrical Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Pranav Kulkarni"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0007999",
+    "epfo_details": {
+      "establishment_name": "Kulkarni Electrical Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0007888",
+    "esic_details": {
+      "employer_name": "Kulkarni Electrical Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0007777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0007666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0007555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0008",
+    "pan_number": "DEMO-PAN-0008",
+    "pan_details": {
+      "name": "Reddy Infrastructure Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0008",
+    "gst_details": {
+      "legal_name": "Reddy Infrastructure Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0008",
+    "udyam_details": {
+      "enterprise_name": "Reddy Infrastructure Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0008123",
+    "incorporation_details": {
+      "company_name": "Reddy Infrastructure Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Karthik Reddy"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0008999",
+    "epfo_details": {
+      "establishment_name": "Reddy Infrastructure Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0008888",
+    "esic_details": {
+      "employer_name": "Reddy Infrastructure Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0008777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0008666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0008555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0009",
+    "pan_number": "DEMO-PAN-0009",
+    "pan_details": {
+      "name": "Joshi Scientific Instruments",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0009",
+    "gst_details": {
+      "legal_name": "Joshi Scientific Instruments",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0009",
+    "udyam_details": {
+      "enterprise_name": "Joshi Scientific Instruments",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0009123",
+    "incorporation_details": {
+      "company_name": "Joshi Scientific Instruments",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Abhishek Joshi"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0009999",
+    "epfo_details": {
+      "establishment_name": "Joshi Scientific Instruments",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0009888",
+    "esic_details": {
+      "employer_name": "Joshi Scientific Instruments",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0009777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0009666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0009555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0010",
+    "pan_number": "DEMO-PAN-0010",
+    "pan_details": {
+      "name": "Malhotra Trading & Services",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0010",
+    "gst_details": {
+      "legal_name": "Malhotra Trading & Services",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0010",
+    "udyam_details": {
+      "enterprise_name": "Malhotra Trading & Services",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0010123",
+    "incorporation_details": {
+      "company_name": "Malhotra Trading & Services",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Arjun Malhotra"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0010999",
+    "epfo_details": {
+      "establishment_name": "Malhotra Trading & Services",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0010888",
+    "esic_details": {
+      "employer_name": "Malhotra Trading & Services",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0010777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0010666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0010555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0011",
+    "pan_number": "DEMO-PAN-0011",
+    "pan_details": {
+      "name": "Bharat Precision Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0011",
+    "gst_details": {
+      "legal_name": "Bharat Precision Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0011",
+    "udyam_details": {
+      "enterprise_name": "Bharat Precision Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0011123",
+    "incorporation_details": {
+      "company_name": "Bharat Precision Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Vivek Bansal"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0011999",
+    "epfo_details": {
+      "establishment_name": "Bharat Precision Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0011888",
+    "esic_details": {
+      "employer_name": "Bharat Precision Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0011777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0011666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0011555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0012",
+    "pan_number": "DEMO-PAN-0012",
+    "pan_details": {
+      "name": "Shree Ganesh Industrial Products",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0012",
+    "gst_details": {
+      "legal_name": "Shree Ganesh Industrial Products",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0012",
+    "udyam_details": {
+      "enterprise_name": "Shree Ganesh Industrial Products",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0012123",
+    "incorporation_details": {
+      "company_name": "Shree Ganesh Industrial Products",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rajesh Patil"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0012999",
+    "epfo_details": {
+      "establishment_name": "Shree Ganesh Industrial Products",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0012888",
+    "esic_details": {
+      "employer_name": "Shree Ganesh Industrial Products",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0012777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0012666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0012555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0013",
+    "pan_number": "DEMO-PAN-0013",
+    "pan_details": {
+      "name": "Rajdhani Engineering Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0013",
+    "gst_details": {
+      "legal_name": "Rajdhani Engineering Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0013",
+    "udyam_details": {
+      "enterprise_name": "Rajdhani Engineering Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0013123",
+    "incorporation_details": {
+      "company_name": "Rajdhani Engineering Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Amit Tiwari"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0013999",
+    "epfo_details": {
+      "establishment_name": "Rajdhani Engineering Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0013888",
+    "esic_details": {
+      "employer_name": "Rajdhani Engineering Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0013777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0013666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0013555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0014",
+    "pan_number": "DEMO-PAN-0014",
+    "pan_details": {
+      "name": "Maharashtra Technical Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0014",
+    "gst_details": {
+      "legal_name": "Maharashtra Technical Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0014",
+    "udyam_details": {
+      "enterprise_name": "Maharashtra Technical Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0014123",
+    "incorporation_details": {
+      "company_name": "Maharashtra Technical Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Sameer Pawar"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0014999",
+    "epfo_details": {
+      "establishment_name": "Maharashtra Technical Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0014888",
+    "esic_details": {
+      "employer_name": "Maharashtra Technical Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0014777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0014666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0014555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0015",
+    "pan_number": "DEMO-PAN-0015",
+    "pan_details": {
+      "name": "Vardhan Electronics India",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0015",
+    "gst_details": {
+      "legal_name": "Vardhan Electronics India",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0015",
+    "udyam_details": {
+      "enterprise_name": "Vardhan Electronics India",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0015123",
+    "incorporation_details": {
+      "company_name": "Vardhan Electronics India",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rohit Gupta"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0015999",
+    "epfo_details": {
+      "establishment_name": "Vardhan Electronics India",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0015888",
+    "esic_details": {
+      "employer_name": "Vardhan Electronics India",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0015777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0015666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0015555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0016",
+    "pan_number": "DEMO-PAN-0016",
+    "pan_details": {
+      "name": "Suryodaya Industrial Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0016",
+    "gst_details": {
+      "legal_name": "Suryodaya Industrial Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0016",
+    "udyam_details": {
+      "enterprise_name": "Suryodaya Industrial Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0016123",
+    "incorporation_details": {
+      "company_name": "Suryodaya Industrial Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Manish Jain"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0016999",
+    "epfo_details": {
+      "establishment_name": "Suryodaya Industrial Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0016888",
+    "esic_details": {
+      "employer_name": "Suryodaya Industrial Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0016777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0016666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0016555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0017",
+    "pan_number": "DEMO-PAN-0017",
+    "pan_details": {
+      "name": "Aryavart Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0017",
+    "gst_details": {
+      "legal_name": "Aryavart Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0017",
+    "udyam_details": {
+      "enterprise_name": "Aryavart Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0017123",
+    "incorporation_details": {
+      "company_name": "Aryavart Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Akash Srivastava"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0017999",
+    "epfo_details": {
+      "establishment_name": "Aryavart Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0017888",
+    "esic_details": {
+      "employer_name": "Aryavart Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0017777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0017666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0017555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0018",
+    "pan_number": "DEMO-PAN-0018",
+    "pan_details": {
+      "name": "Hindustan Integrated Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0018",
+    "gst_details": {
+      "legal_name": "Hindustan Integrated Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0018",
+    "udyam_details": {
+      "enterprise_name": "Hindustan Integrated Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0018123",
+    "incorporation_details": {
+      "company_name": "Hindustan Integrated Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Vikram Singh"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0018999",
+    "epfo_details": {
+      "establishment_name": "Hindustan Integrated Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0018888",
+    "esic_details": {
+      "employer_name": "Hindustan Integrated Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0018777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0018666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0018555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0019",
+    "pan_number": "DEMO-PAN-0019",
+    "pan_details": {
+      "name": "Navbharat Engineering & Automation",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0019",
+    "gst_details": {
+      "legal_name": "Navbharat Engineering & Automation",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0019",
+    "udyam_details": {
+      "enterprise_name": "Navbharat Engineering & Automation",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0019123",
+    "incorporation_details": {
+      "company_name": "Navbharat Engineering & Automation",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Neeraj Mishra"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0019999",
+    "epfo_details": {
+      "establishment_name": "Navbharat Engineering & Automation",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0019888",
+    "esic_details": {
+      "employer_name": "Navbharat Engineering & Automation",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0019777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0019666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0019555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0020",
+    "pan_number": "DEMO-PAN-0020",
+    "pan_details": {
+      "name": "Shivam Infrastructure Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0020",
+    "gst_details": {
+      "legal_name": "Shivam Infrastructure Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0020",
+    "udyam_details": {
+      "enterprise_name": "Shivam Infrastructure Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0020123",
+    "incorporation_details": {
+      "company_name": "Shivam Infrastructure Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Shivam Choudhary"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0020999",
+    "epfo_details": {
+      "establishment_name": "Shivam Infrastructure Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0020888",
+    "esic_details": {
+      "employer_name": "Shivam Infrastructure Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0020777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0020666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0020555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0021",
+    "pan_number": "DEMO-PAN-0021",
+    "pan_details": {
+      "name": "Triveni Automation Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0021",
+    "gst_details": {
+      "legal_name": "Triveni Automation Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0021",
+    "udyam_details": {
+      "enterprise_name": "Triveni Automation Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0021123",
+    "incorporation_details": {
+      "company_name": "Triveni Automation Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Sanjay Kulkarni"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0021999",
+    "epfo_details": {
+      "establishment_name": "Triveni Automation Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0021888",
+    "esic_details": {
+      "employer_name": "Triveni Automation Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0021777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0021666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0021555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0022",
+    "pan_number": "DEMO-PAN-0022",
+    "pan_details": {
+      "name": "Kaveri Office Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0022",
+    "gst_details": {
+      "legal_name": "Kaveri Office Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0022",
+    "udyam_details": {
+      "enterprise_name": "Kaveri Office Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0022123",
+    "incorporation_details": {
+      "company_name": "Kaveri Office Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Priya Nair"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0022999",
+    "epfo_details": {
+      "establishment_name": "Kaveri Office Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0022888",
+    "esic_details": {
+      "employer_name": "Kaveri Office Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0022777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0022666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0022555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0023",
+    "pan_number": "DEMO-PAN-0023",
+    "pan_details": {
+      "name": "Rajputana Safety Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0023",
+    "gst_details": {
+      "legal_name": "Rajputana Safety Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0023",
+    "udyam_details": {
+      "enterprise_name": "Rajputana Safety Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0023123",
+    "incorporation_details": {
+      "company_name": "Rajputana Safety Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Manoj Singh"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0023999",
+    "epfo_details": {
+      "establishment_name": "Rajputana Safety Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0023888",
+    "esic_details": {
+      "employer_name": "Rajputana Safety Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0023777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0023666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0023555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0024",
+    "pan_number": "DEMO-PAN-0024",
+    "pan_details": {
+      "name": "Eastern Power Equipments",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0024",
+    "gst_details": {
+      "legal_name": "Eastern Power Equipments",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0024",
+    "udyam_details": {
+      "enterprise_name": "Eastern Power Equipments",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0024123",
+    "incorporation_details": {
+      "company_name": "Eastern Power Equipments",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Sourav Das"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0024999",
+    "epfo_details": {
+      "establishment_name": "Eastern Power Equipments",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0024888",
+    "esic_details": {
+      "employer_name": "Eastern Power Equipments",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0024777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0024666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0024555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0025",
+    "pan_number": "DEMO-PAN-0025",
+    "pan_details": {
+      "name": "Deccan Medical Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0025",
+    "gst_details": {
+      "legal_name": "Deccan Medical Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0025",
+    "udyam_details": {
+      "enterprise_name": "Deccan Medical Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0025123",
+    "incorporation_details": {
+      "company_name": "Deccan Medical Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Sneha Joshi"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0025999",
+    "epfo_details": {
+      "establishment_name": "Deccan Medical Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0025888",
+    "esic_details": {
+      "employer_name": "Deccan Medical Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0025777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0025666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0025555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0026",
+    "pan_number": "DEMO-PAN-0026",
+    "pan_details": {
+      "name": "Ganga Water Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0026",
+    "gst_details": {
+      "legal_name": "Ganga Water Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0026",
+    "udyam_details": {
+      "enterprise_name": "Ganga Water Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0026123",
+    "incorporation_details": {
+      "company_name": "Ganga Water Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Pankaj Yadav"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0026999",
+    "epfo_details": {
+      "establishment_name": "Ganga Water Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0026888",
+    "esic_details": {
+      "employer_name": "Ganga Water Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0026777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0026666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0026555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0027",
+    "pan_number": "DEMO-PAN-0027",
+    "pan_details": {
+      "name": "Coastal Infrastructure Works",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0027",
+    "gst_details": {
+      "legal_name": "Coastal Infrastructure Works",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0027",
+    "udyam_details": {
+      "enterprise_name": "Coastal Infrastructure Works",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0027123",
+    "incorporation_details": {
+      "company_name": "Coastal Infrastructure Works",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rahul Menon"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0027999",
+    "epfo_details": {
+      "establishment_name": "Coastal Infrastructure Works",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0027888",
+    "esic_details": {
+      "employer_name": "Coastal Infrastructure Works",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0027777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0027666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0027555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0028",
+    "pan_number": "DEMO-PAN-0028",
+    "pan_details": {
+      "name": "Vindhya Electronics & Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0028",
+    "gst_details": {
+      "legal_name": "Vindhya Electronics & Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0028",
+    "udyam_details": {
+      "enterprise_name": "Vindhya Electronics & Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0028123",
+    "incorporation_details": {
+      "company_name": "Vindhya Electronics & Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rakesh Tiwari"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0028999",
+    "epfo_details": {
+      "establishment_name": "Vindhya Electronics & Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0028888",
+    "esic_details": {
+      "employer_name": "Vindhya Electronics & Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0028777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0028666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0028555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0029",
+    "pan_number": "DEMO-PAN-0029",
+    "pan_details": {
+      "name": "Bharat Agro Machinery",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0029",
+    "gst_details": {
+      "legal_name": "Bharat Agro Machinery",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0029",
+    "udyam_details": {
+      "enterprise_name": "Bharat Agro Machinery",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0029123",
+    "incorporation_details": {
+      "company_name": "Bharat Agro Machinery",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Deepak Choudhary"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0029999",
+    "epfo_details": {
+      "establishment_name": "Bharat Agro Machinery",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0029888",
+    "esic_details": {
+      "employer_name": "Bharat Agro Machinery",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0029777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0029666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0029555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0030",
+    "pan_number": "DEMO-PAN-0030",
+    "pan_details": {
+      "name": "Narmada Renewable Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0030",
+    "gst_details": {
+      "legal_name": "Narmada Renewable Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0030",
+    "udyam_details": {
+      "enterprise_name": "Narmada Renewable Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0030123",
+    "incorporation_details": {
+      "company_name": "Narmada Renewable Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Kunal Shah"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0030999",
+    "epfo_details": {
+      "establishment_name": "Narmada Renewable Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0030888",
+    "esic_details": {
+      "employer_name": "Narmada Renewable Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0030777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0030666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0030555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0031",
+    "pan_number": "DEMO-PAN-0031",
+    "pan_details": {
+      "name": "Himalayan Scientific Supplies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0031",
+    "gst_details": {
+      "legal_name": "Himalayan Scientific Supplies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0031",
+    "udyam_details": {
+      "enterprise_name": "Himalayan Scientific Supplies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0031123",
+    "incorporation_details": {
+      "company_name": "Himalayan Scientific Supplies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Aman Rawat"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0031999",
+    "epfo_details": {
+      "establishment_name": "Himalayan Scientific Supplies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0031888",
+    "esic_details": {
+      "employer_name": "Himalayan Scientific Supplies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0031777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0031666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0031555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0032",
+    "pan_number": "DEMO-PAN-0032",
+    "pan_details": {
+      "name": "Central Data Networks",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0032",
+    "gst_details": {
+      "legal_name": "Central Data Networks",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0032",
+    "udyam_details": {
+      "enterprise_name": "Central Data Networks",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0032123",
+    "incorporation_details": {
+      "company_name": "Central Data Networks",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Mohit Saxena"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0032999",
+    "epfo_details": {
+      "establishment_name": "Central Data Networks",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0032888",
+    "esic_details": {
+      "employer_name": "Central Data Networks",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0032777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0032666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0032555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0033",
+    "pan_number": "DEMO-PAN-0033",
+    "pan_details": {
+      "name": "Bluewave Logistics Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0033",
+    "gst_details": {
+      "legal_name": "Bluewave Logistics Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0033",
+    "udyam_details": {
+      "enterprise_name": "Bluewave Logistics Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0033123",
+    "incorporation_details": {
+      "company_name": "Bluewave Logistics Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Nikhil Fernandes"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0033999",
+    "epfo_details": {
+      "establishment_name": "Bluewave Logistics Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0033888",
+    "esic_details": {
+      "employer_name": "Bluewave Logistics Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0033777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0033666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0033555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0034",
+    "pan_number": "DEMO-PAN-0034",
+    "pan_details": {
+      "name": "Sahyadri Fabrication Works",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0034",
+    "gst_details": {
+      "legal_name": "Sahyadri Fabrication Works",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0034",
+    "udyam_details": {
+      "enterprise_name": "Sahyadri Fabrication Works",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0034123",
+    "incorporation_details": {
+      "company_name": "Sahyadri Fabrication Works",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Mahesh Pawar"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0034999",
+    "epfo_details": {
+      "establishment_name": "Sahyadri Fabrication Works",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0034888",
+    "esic_details": {
+      "employer_name": "Sahyadri Fabrication Works",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0034777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0034666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0034555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0035",
+    "pan_number": "DEMO-PAN-0035",
+    "pan_details": {
+      "name": "Northstar Cyber Solutions",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0035",
+    "gst_details": {
+      "legal_name": "Northstar Cyber Solutions",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0035",
+    "udyam_details": {
+      "enterprise_name": "Northstar Cyber Solutions",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0035123",
+    "incorporation_details": {
+      "company_name": "Northstar Cyber Solutions",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Ishita Kapoor"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0035999",
+    "epfo_details": {
+      "establishment_name": "Northstar Cyber Solutions",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0035888",
+    "esic_details": {
+      "employer_name": "Northstar Cyber Solutions",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0035777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0035666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0035555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0036",
+    "pan_number": "DEMO-PAN-0036",
+    "pan_details": {
+      "name": "Mahanadi Industrial Traders",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0036",
+    "gst_details": {
+      "legal_name": "Mahanadi Industrial Traders",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0036",
+    "udyam_details": {
+      "enterprise_name": "Mahanadi Industrial Traders",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0036123",
+    "incorporation_details": {
+      "company_name": "Mahanadi Industrial Traders",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Siddharth Mishra"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0036999",
+    "epfo_details": {
+      "establishment_name": "Mahanadi Industrial Traders",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0036888",
+    "esic_details": {
+      "employer_name": "Mahanadi Industrial Traders",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0036777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0036666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0036555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0037",
+    "pan_number": "DEMO-PAN-0037",
+    "pan_details": {
+      "name": "Aravali Engineering Services",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0037",
+    "gst_details": {
+      "legal_name": "Aravali Engineering Services",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0037",
+    "udyam_details": {
+      "enterprise_name": "Aravali Engineering Services",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0037123",
+    "incorporation_details": {
+      "company_name": "Aravali Engineering Services",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Vikas Sharma"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0037999",
+    "epfo_details": {
+      "establishment_name": "Aravali Engineering Services",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0037888",
+    "esic_details": {
+      "employer_name": "Aravali Engineering Services",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0037777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0037666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0037555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0038",
+    "pan_number": "DEMO-PAN-0038",
+    "pan_details": {
+      "name": "Godavari Electrical Industries",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0038",
+    "gst_details": {
+      "legal_name": "Godavari Electrical Industries",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0038",
+    "udyam_details": {
+      "enterprise_name": "Godavari Electrical Industries",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0038123",
+    "incorporation_details": {
+      "company_name": "Godavari Electrical Industries",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Tejas Patil"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0038999",
+    "epfo_details": {
+      "establishment_name": "Godavari Electrical Industries",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0038888",
+    "esic_details": {
+      "employer_name": "Godavari Electrical Industries",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0038777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0038666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0038555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0039",
+    "pan_number": "DEMO-PAN-0039",
+    "pan_details": {
+      "name": "Coromandel Telecom Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0039",
+    "gst_details": {
+      "legal_name": "Coromandel Telecom Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0039",
+    "udyam_details": {
+      "enterprise_name": "Coromandel Telecom Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0039123",
+    "incorporation_details": {
+      "company_name": "Coromandel Telecom Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Arvind Kumar"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0039999",
+    "epfo_details": {
+      "establishment_name": "Coromandel Telecom Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0039888",
+    "esic_details": {
+      "employer_name": "Coromandel Telecom Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0039777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0039666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0039555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0040",
+    "pan_number": "DEMO-PAN-0040",
+    "pan_details": {
+      "name": "Saraswati Digital Services",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0040",
+    "gst_details": {
+      "legal_name": "Saraswati Digital Services",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0040",
+    "udyam_details": {
+      "enterprise_name": "Saraswati Digital Services",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0040123",
+    "incorporation_details": {
+      "company_name": "Saraswati Digital Services",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Neha Verma"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0040999",
+    "epfo_details": {
+      "establishment_name": "Saraswati Digital Services",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0040888",
+    "esic_details": {
+      "employer_name": "Saraswati Digital Services",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0040777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0040666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0040555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0041",
+    "pan_number": "DEMO-PAN-0041",
+    "pan_details": {
+      "name": "Deccan Green Energy",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0041",
+    "gst_details": {
+      "legal_name": "Deccan Green Energy",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0041",
+    "udyam_details": {
+      "enterprise_name": "Deccan Green Energy",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0041123",
+    "incorporation_details": {
+      "company_name": "Deccan Green Energy",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Aakash Desai"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0041999",
+    "epfo_details": {
+      "establishment_name": "Deccan Green Energy",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0041888",
+    "esic_details": {
+      "employer_name": "Deccan Green Energy",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0041777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0041666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0041555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0042",
+    "pan_number": "DEMO-PAN-0042",
+    "pan_details": {
+      "name": "Kaveri Construction Equipment",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0042",
+    "gst_details": {
+      "legal_name": "Kaveri Construction Equipment",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0042",
+    "udyam_details": {
+      "enterprise_name": "Kaveri Construction Equipment",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0042123",
+    "incorporation_details": {
+      "company_name": "Kaveri Construction Equipment",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Harish Gowda"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0042999",
+    "epfo_details": {
+      "establishment_name": "Kaveri Construction Equipment",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0042888",
+    "esic_details": {
+      "employer_name": "Kaveri Construction Equipment",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0042777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0042666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0042555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0043",
+    "pan_number": "DEMO-PAN-0043",
+    "pan_details": {
+      "name": "Gujarat Precision Components",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0043",
+    "gst_details": {
+      "legal_name": "Gujarat Precision Components",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0043",
+    "udyam_details": {
+      "enterprise_name": "Gujarat Precision Components",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0043123",
+    "incorporation_details": {
+      "company_name": "Gujarat Precision Components",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Bhavin Desai"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0043999",
+    "epfo_details": {
+      "establishment_name": "Gujarat Precision Components",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0043888",
+    "esic_details": {
+      "employer_name": "Gujarat Precision Components",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0043777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0043666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0043555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0044",
+    "pan_number": "DEMO-PAN-0044",
+    "pan_details": {
+      "name": "Brahmaputra Safety & Industrial",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0044",
+    "gst_details": {
+      "legal_name": "Brahmaputra Safety & Industrial",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0044",
+    "udyam_details": {
+      "enterprise_name": "Brahmaputra Safety & Industrial",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0044123",
+    "incorporation_details": {
+      "company_name": "Brahmaputra Safety & Industrial",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Anupam Bora"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0044999",
+    "epfo_details": {
+      "establishment_name": "Brahmaputra Safety & Industrial",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0044888",
+    "esic_details": {
+      "employer_name": "Brahmaputra Safety & Industrial",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0044777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0044666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0044555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0045",
+    "pan_number": "DEMO-PAN-0045",
+    "pan_details": {
+      "name": "Konkan Marine Technologies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0045",
+    "gst_details": {
+      "legal_name": "Konkan Marine Technologies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0045",
+    "udyam_details": {
+      "enterprise_name": "Konkan Marine Technologies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0045123",
+    "incorporation_details": {
+      "company_name": "Konkan Marine Technologies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Ritesh Naik"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0045999",
+    "epfo_details": {
+      "establishment_name": "Konkan Marine Technologies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0045888",
+    "esic_details": {
+      "employer_name": "Konkan Marine Technologies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0045777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0045666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0045555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0046",
+    "pan_number": "DEMO-PAN-0046",
+    "pan_details": {
+      "name": "Vidarbha Power Controls",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0046",
+    "gst_details": {
+      "legal_name": "Vidarbha Power Controls",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0046",
+    "udyam_details": {
+      "enterprise_name": "Vidarbha Power Controls",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0046123",
+    "incorporation_details": {
+      "company_name": "Vidarbha Power Controls",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Nitin Wankhede"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0046999",
+    "epfo_details": {
+      "establishment_name": "Vidarbha Power Controls",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0046888",
+    "esic_details": {
+      "employer_name": "Vidarbha Power Controls",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0046777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0046666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0046555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0047",
+    "pan_number": "DEMO-PAN-0047",
+    "pan_details": {
+      "name": "Yamuna Office Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0047",
+    "gst_details": {
+      "legal_name": "Yamuna Office Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0047",
+    "udyam_details": {
+      "enterprise_name": "Yamuna Office Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0047123",
+    "incorporation_details": {
+      "company_name": "Yamuna Office Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Pooja Arora"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0047999",
+    "epfo_details": {
+      "establishment_name": "Yamuna Office Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0047888",
+    "esic_details": {
+      "employer_name": "Yamuna Office Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0047777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0047666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0047555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0048",
+    "pan_number": "DEMO-PAN-0048",
+    "pan_details": {
+      "name": "Deccan Defence Supplies",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0048",
+    "gst_details": {
+      "legal_name": "Deccan Defence Supplies",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0048",
+    "udyam_details": {
+      "enterprise_name": "Deccan Defence Supplies",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0048123",
+    "incorporation_details": {
+      "company_name": "Deccan Defence Supplies",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Rajat Kulkarni"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0048999",
+    "epfo_details": {
+      "establishment_name": "Deccan Defence Supplies",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0048888",
+    "esic_details": {
+      "employer_name": "Deccan Defence Supplies",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0048777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0048666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0048555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0049",
+    "pan_number": "DEMO-PAN-0049",
+    "pan_details": {
+      "name": "Satpura Environmental Systems",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0049",
+    "gst_details": {
+      "legal_name": "Satpura Environmental Systems",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0049",
+    "udyam_details": {
+      "enterprise_name": "Satpura Environmental Systems",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0049123",
+    "incorporation_details": {
+      "company_name": "Satpura Environmental Systems",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Meera Thakur"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0049999",
+    "epfo_details": {
+      "establishment_name": "Satpura Environmental Systems",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0049888",
+    "esic_details": {
+      "employer_name": "Satpura Environmental Systems",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0049777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0049666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0049555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  },
+  {
+    "id": "0050",
+    "pan_number": "DEMO-PAN-0050",
+    "pan_details": {
+      "name": "Indus Smart Infrastructure",
+      "status": "Active",
+      "category": "Company",
+      "last_return_filed": "2025-11-10"
+    },
+    "gstin": "DEMO-GST-0050",
+    "gst_details": {
+      "legal_name": "Indus Smart Infrastructure",
+      "status": "Active",
+      "taxpayer_type": "Regular",
+      "date_of_registration": "2018-04-12"
+    },
+    "udyam_number": "DEMO-UDYAM-0050",
+    "udyam_details": {
+      "enterprise_name": "Indus Smart Infrastructure",
+      "enterprise_type": "Micro/Small/Medium",
+      "date_of_incorporation": "2015-08-20"
+    },
+    "cin_number": "U72900MH2015PTC0050123",
+    "incorporation_details": {
+      "company_name": "Indus Smart Infrastructure",
+      "date_of_incorporation": "2015-08-20",
+      "status": "Active",
+      "roc_code": "RoC-Mumbai"
+    },
+    "mca_status": {
+      "filing_status": "Up to Date",
+      "directors": [
+        "Varun Mehta"
+      ],
+      "paid_up_capital": "1,000,000"
+    },
+    "epfo_number": "EPFO-0050999",
+    "epfo_details": {
+      "establishment_name": "Indus Smart Infrastructure",
+      "status": "Active",
+      "total_employees": 45
+    },
+    "esic_number": "ESIC-0050888",
+    "esic_details": {
+      "employer_name": "Indus Smart Infrastructure",
+      "status": "Active",
+      "insured_persons": 40
+    },
+    "bis_license": "CM/L-0050777",
+    "bis_details": {
+      "status": "Valid",
+      "valid_upto": "2028-12-31"
+    },
+    "startup_india_cert": "DIPP0050666",
+    "startup_details": {
+      "recognition_status": "Recognized",
+      "date_of_recognition": "2021-02-15"
+    },
+    "nsic_cert": "NSIC-0050555",
+    "nsic_details": {
+      "status": "Active",
+      "monetary_limit": "Rs. 500 Lakhs",
+      "valid_upto": "2027-06-30"
+    }
+  }
+]
