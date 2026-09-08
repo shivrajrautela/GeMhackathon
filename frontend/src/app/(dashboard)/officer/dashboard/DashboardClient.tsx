@@ -218,7 +218,7 @@ export default function DashboardClient({
                 <p className="font-semibold text-slate-800 text-sm">Bid {item.action}</p>
                 <p className="text-xs text-slate-500">{item.bid_id} · By {item.officer_id}</p>
               </div>
-              <span className="text-xs text-slate-400 shrink-0 whitespace-nowrap">{new Date(item.timestamp).toLocaleTimeString()}</span>
+              <span suppressHydrationWarning className="text-xs text-slate-400 shrink-0 whitespace-nowrap">{new Date(item.timestamp).toLocaleTimeString()}</span>
             </div>
           ))}
           {auditLogs.length === 0 && (

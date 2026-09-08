@@ -220,7 +220,7 @@ export default function AuditLogsPage() {
                       </p>
 
                       <div className="flex items-center gap-4 text-xs text-slate-500">
-                        <span className="flex items-center gap-1">
+                        <span suppressHydrationWarning className="flex items-center gap-1">
                           <Clock className="h-3 w-3" /> {new Date(log.timestamp).toLocaleString()}
                         </span>
                         <span className="flex items-center gap-1">
