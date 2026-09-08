@@ -11,37 +11,31 @@ import {
 } from "recharts";
 
 type DashboardClientProps = {
+  stats: any;
   activeTenders: any[];
   pendingBids: any[];
   highRiskBids: any[];
-  allBidders: any[];
+  allBids: any[];
+  auditLogs: any[];
   tenderData: any[];
 };
 
-// Mock recent activity — will connect to audit log backend later
-const recentActivity = [
-  { id: 1, event: "AI Analysis Completed", detail: "TND-2026-001 · Sharma Enterprises", time: "2 min ago", type: "info" },
-  { id: 2, event: "High-Risk Flag Raised", detail: "TND-2026-003 · XYZ Traders — GSTIN mismatch", time: "18 min ago", type: "danger" },
-  { id: 3, event: "Bid Submitted", detail: "TND-2026-002 · Infra Solutions Pvt. Ltd.", time: "45 min ago", type: "info" },
-  { id: 4, event: "Document Tampering Detected", detail: "TND-2026-003 · XYZ Traders — PDF metadata altered", time: "1 hr ago", type: "danger" },
-  { id: 5, event: "Audit Log Finalised", detail: "TND-2026-001 · Sent to CVC", time: "3 hrs ago", type: "success" },
-];
-
-// Mock high-risk flagged bidders
-const flaggedBidders = [
-  { id: "BID-003", company: "XYZ Traders", tender: "TND-2026-003", issue: "Document tampering + GSTIN mismatch", score: 22 },
-  { id: "BID-007", company: "Fake Infra Co.", tender: "TND-2026-001", issue: "PAN does not match MCA records", score: 15 },
-];
-
 export default function DashboardClient({
-  activeTenders, pendingBids, highRiskBids, allBidders, tenderData
+  stats, activeTenders, pendingBids, highRiskBids, allBids, auditLogs, tenderData
 }: DashboardClientProps) {
 
+  // For the Risk Distribution chart
   const riskData = [
-    { name: "Low Risk",    value: allBidders.filter(b => b.riskTag === "Low").length,    color: "#10b981" },
-    { name: "Medium Risk", value: allBidders.filter(b => b.riskTag === "Medium").length, color: "#fbbf24" },
+    { name: "Low Risk",    value: allBids.filter(b => b.aiScore >= 70).length,    color: "#10b981" },
+    { name: "Medium Risk", value: allBids.filter(b => b.aiScore >= 40 && b.aiScore < 70).length, color: "#fbbf24" },
     { name: "High Risk",   value: highRiskBids.length,                                   color: "#ef4444" },
   ];
+
+  // Calculate average compliance across all scored bids
+  const scoredBids = allBids.filter(b => b.aiScore > 0);
+  const avgCompliance = scoredBids.length > 0 
+    ? Math.round(scoredBids.reduce((acc, b) => acc + b.aiScore, 0) / scoredBids.length) 
+    : 0;
 
   return (
     <div className="space-y-8 pb-10">
@@ -58,30 +52,30 @@ export default function DashboardClient({
       </div>
 
       {/* ⚠️ HIGH RISK ALERT BANNER */}
-      {flaggedBidders.length > 0 && (
+      {highRiskBids.length > 0 && (
         <div className="bg-red-50 border border-red-300 rounded-lg p-5 space-y-3">
           <div className="flex items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-red-600 shrink-0" />
             <h3 className="font-bold text-red-800 text-base">
-              {flaggedBidders.length} High-Risk Bid{flaggedBidders.length > 1 ? "s" : ""} Require Immediate Attention
+              {highRiskBids.length} High-Risk Bid{highRiskBids.length > 1 ? "s" : ""} Require Immediate Attention
             </h3>
           </div>
           <div className="divide-y divide-red-200">
-            {flaggedBidders.map((b) => (
+            {highRiskBids.map((b) => (
               <div key={b.id} className="flex items-center justify-between py-3 gap-4">
                 <div className="space-y-0.5 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs text-red-500 font-semibold">{b.tender}</span>
+                    <span className="font-mono text-xs text-red-500 font-semibold">{b.tenderId || b.tender_id}</span>
                     <Badge variant="outline" className="bg-red-100 text-red-800 border-red-300 text-xs">⚠ FLAGGED</Badge>
                   </div>
-                  <p className="font-bold text-red-900">{b.company}</p>
-                  <p className="text-sm text-red-700">{b.issue}</p>
+                  <p className="font-bold text-red-900">{b.company_name}</p>
+                  <p className="text-sm text-red-700">{b.flags?.[0] || 'AI detected severe compliance issues'}</p>
                 </div>
                 <div className="text-center shrink-0">
-                  <p className="text-2xl font-extrabold text-red-600">{b.score}%</p>
+                  <p className="text-2xl font-extrabold text-red-600">{b.aiScore}%</p>
                   <p className="text-xs text-red-500 font-medium">AI Score</p>
                 </div>
-                <Link href={`/officer/tenders/${b.tender}`}>
+                <Link href={`/officer/tenders/${b.tenderId || b.tender_id}`}>
                   <Button size="sm" variant="outline" className="border-red-300 text-red-700 hover:bg-red-100 shrink-0">
                     <Eye className="mr-1.5 h-4 w-4" /> Review
                   </Button>
@@ -100,8 +94,8 @@ export default function DashboardClient({
             <FileText className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-900">{activeTenders.length || 5}</div>
-            <p className="text-xs text-blue-700 font-medium mt-1">+2 this month</p>
+            <div className="text-3xl font-bold text-slate-900">{activeTenders.length}</div>
+            <p className="text-xs text-slate-500 mt-1 font-medium">Across all departments</p>
           </CardContent>
         </Card>
 
@@ -111,8 +105,8 @@ export default function DashboardClient({
             <Clock className="h-4 w-4 text-amber-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-900">{pendingBids.length || 8}</div>
-            <p className="text-xs text-slate-500 font-medium mt-1">Across all tenders</p>
+            <div className="text-3xl font-bold text-slate-900">{stats.pending}</div>
+            <p className="text-xs text-slate-500 mt-1 font-medium">Bids waiting for verification</p>
           </CardContent>
         </Card>
 
@@ -122,21 +116,19 @@ export default function DashboardClient({
             <AlertTriangle className="h-4 w-4 text-red-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-red-600">{flaggedBidders.length}</div>
-            <p className="text-xs text-red-600 font-semibold mt-1">Requires attention</p>
+            <div className="text-3xl font-bold text-slate-900">{highRiskBids.length}</div>
+            <p className="text-xs text-red-600 mt-1 font-semibold">Requires attention</p>
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-green-600 shadow-sm">
+        <Card className="border-l-4 border-l-green-500 shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xs font-bold text-slate-500 uppercase tracking-widest">Avg. Compliance</CardTitle>
-            <ShieldCheck className="h-4 w-4 text-green-600" />
+            <ShieldCheck className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-700">
-              {Math.round((allBidders.filter(b => b.riskTag === "Low").length / (allBidders.length || 1)) * 100) || 74}%
-            </div>
-            <p className="text-xs text-green-700 font-medium mt-1">AI-verified bids</p>
+            <div className="text-3xl font-bold text-slate-900">{avgCompliance > 0 ? `${avgCompliance}%` : 'N/A'}</div>
+            <p className="text-xs text-green-600 mt-1 font-semibold">AI-verified bids</p>
           </CardContent>
         </Card>
       </div>

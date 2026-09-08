@@ -1,14 +1,14 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { mockTenders } from "@/lib/mock-data";
 import {
   Eye, FileText, AlertTriangle, Clock, CheckCircle,
-  IndianRupee, Calendar, Users, ShieldCheck, Building
+  IndianRupee, Calendar, Users, ShieldCheck, Building, Loader2
 } from "lucide-react";
 
 const statusConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
@@ -30,26 +30,84 @@ const statusConfig: Record<string, { label: string; color: string; icon: React.R
 };
 
 const riskBadge = (score: number) => {
-  if (score < 30) return "bg-green-50 text-green-700 border-green-200";
-  if (score < 60) return "bg-amber-50 text-amber-700 border-amber-200";
+  if (score >= 70) return "bg-green-50 text-green-700 border-green-200";
+  if (score >= 40) return "bg-amber-50 text-amber-700 border-amber-200";
   return "bg-red-50 text-red-700 border-red-200";
 };
 
 const riskLabel = (score: number) => {
-  if (score < 30) return "Low";
-  if (score < 60) return "Medium";
+  if (score >= 70) return "Low";
+  if (score >= 40) return "Medium";
   return "High";
 };
 
 export default function OfficerTenders() {
-  const activeTenders    = mockTenders.filter(t => t.status === "Active");
-  const underReview      = mockTenders.filter(t => t.status === "Under Review");
-  const closedTenders    = mockTenders.filter(t => t.status === "Closed");
-  const totalBids        = mockTenders.reduce((sum, t) => sum + t.bidsCount, 0);
-  const highRiskTenders  = mockTenders.filter(t => t.avgRiskScore >= 60);
+  const [loading, setLoading] = useState(true);
+  const [tenders, setTenders] = useState<any[]>([]);
+  const [allBids, setAllBids] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [tendersRes, bidsRes] = await Promise.all([
+          fetch('http://localhost:5000/api/tenders'),
+          fetch('http://localhost:5000/api/officer/bids')
+        ]);
+        
+        const tendersJson = await tendersRes.json();
+        const bidsJson = await bidsRes.json();
+
+        let bidsList = [];
+        if (bidsJson.success) bidsList = bidsJson.data;
+        
+        let tendersList = [];
+        if (tendersJson.success) {
+          tendersList = tendersJson.data.map((t: any) => {
+            const tenderBids = bidsList.filter((b: any) => b.tender_id === t.id);
+            const scoredBids = tenderBids.filter((b: any) => b.aiScore > 0);
+            
+            let avgRiskScore = 100;
+            if (scoredBids.length > 0) {
+              avgRiskScore = Math.round(scoredBids.reduce((acc: number, b: any) => acc + b.aiScore, 0) / scoredBids.length);
+            } else if (tenderBids.length === 0) {
+              avgRiskScore = 0;
+            }
+
+            return {
+              ...t,
+              bidsCount: tenderBids.length,
+              avgRiskScore
+            };
+          });
+        }
+
+        setTenders(tendersList);
+        setAllBids(bidsList);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading tenders...</p>
+      </div>
+    );
+  }
+
+  const activeTenders    = tenders.filter(t => t.status !== "Closed");
+  const closedTenders    = tenders.filter(t => t.status === "Closed");
+  const totalBids        = allBids.length;
+  const highRiskTenders  = tenders.filter(t => t.avgRiskScore > 0 && t.avgRiskScore < 40);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-10">
 
       {/* Header */}
       <div className="pb-4 border-b border-slate-200 flex items-start justify-between">
@@ -61,7 +119,7 @@ export default function OfficerTenders() {
           </p>
         </div>
         <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-3 py-1.5 font-semibold mt-1">
-          <FileText className="mr-1.5 h-3.5 w-3.5" /> {mockTenders.length} Total Tenders
+          <FileText className="mr-1.5 h-3.5 w-3.5" /> {tenders.length} Total Tenders
         </Badge>
       </div>
 
@@ -76,15 +134,6 @@ export default function OfficerTenders() {
             <CheckCircle className="h-8 w-8 text-green-400" />
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-amber-500 shadow-sm">
-          <CardContent className="pt-4 pb-4 flex items-center justify-between">
-            <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Under Review</p>
-              <p className="text-3xl font-bold text-slate-900">{underReview.length}</p>
-            </div>
-            <Clock className="h-8 w-8 text-amber-400" />
-          </CardContent>
-        </Card>
         <Card className="border-l-4 border-l-blue-600 shadow-sm">
           <CardContent className="pt-4 pb-4 flex items-center justify-between">
             <div>
@@ -97,135 +146,104 @@ export default function OfficerTenders() {
         <Card className="border-l-4 border-l-red-500 shadow-sm">
           <CardContent className="pt-4 pb-4 flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">High-Risk</p>
-              <p className="text-3xl font-bold text-red-600">{highRiskTenders.length}</p>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">High-Risk Tenders</p>
+              <p className="text-3xl font-bold text-slate-900">{highRiskTenders.length}</p>
             </div>
             <AlertTriangle className="h-8 w-8 text-red-400" />
+          </CardContent>
+        </Card>
+        <Card className="border-l-4 border-l-slate-400 shadow-sm">
+          <CardContent className="pt-4 pb-4 flex items-center justify-between">
+            <div>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Closed</p>
+              <p className="text-3xl font-bold text-slate-900">{closedTenders.length}</p>
+            </div>
+            <FileText className="h-8 w-8 text-slate-400" />
           </CardContent>
         </Card>
       </div>
 
       {/* Tenders Table */}
-      <Card className="shadow-sm">
-        <CardHeader className="bg-slate-50 border-b">
-          <CardTitle className="text-base font-bold text-slate-800">All Tenders</CardTitle>
-          <CardDescription className="text-xs text-slate-500">
-            Click <span className="font-semibold text-blue-700">"Review Bids"</span> on any tender to open the AI Verification Center.
-          </CardDescription>
+      <Card className="shadow-sm border-slate-200">
+        <CardHeader className="bg-slate-50 border-b border-slate-100 pb-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-lg font-bold text-slate-800">Tender Directory</CardTitle>
+              <CardDescription>Select a tender to view its submitted bids and AI compliance reports.</CardDescription>
+            </div>
+          </div>
         </CardHeader>
         <CardContent className="p-0">
           <Table>
-            <TableHeader>
-              <TableRow className="bg-slate-50">
-                <TableHead className="font-semibold text-slate-600">Tender ID</TableHead>
-                <TableHead className="font-semibold text-slate-600">Title & Department</TableHead>
-                <TableHead className="font-semibold text-slate-600">Budget</TableHead>
-                <TableHead className="font-semibold text-slate-600">Deadline</TableHead>
+            <TableHeader className="bg-slate-50/50">
+              <TableRow>
+                <TableHead className="w-[120px] font-semibold text-slate-600">ID</TableHead>
+                <TableHead className="font-semibold text-slate-600">Tender Details</TableHead>
                 <TableHead className="font-semibold text-slate-600">Status</TableHead>
-                <TableHead className="font-semibold text-slate-600 text-center">Bids</TableHead>
-                <TableHead className="font-semibold text-slate-600 text-center">Avg. Risk</TableHead>
-                <TableHead className="font-semibold text-slate-600 text-right">Action</TableHead>
+                <TableHead className="text-center font-semibold text-slate-600">Bids</TableHead>
+                <TableHead className="text-center font-semibold text-slate-600">Avg Compliance</TableHead>
+                <TableHead className="text-right font-semibold text-slate-600">Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {mockTenders.map((tender) => {
-                const status = statusConfig[tender.status] || statusConfig["Active"];
-                const isHighRisk = tender.avgRiskScore >= 60;
+              {tenders.map((tender) => {
+                const conf = statusConfig[tender.status] || statusConfig["Active"];
                 return (
-                  <TableRow
-                    key={tender.id}
-                    className={`hover:bg-slate-50 transition-colors ${isHighRisk ? "bg-red-50/30" : ""}`}
-                  >
-                    {/* Tender ID */}
+                  <TableRow key={tender.id} className="hover:bg-slate-50 transition-colors">
+                    <TableCell className="font-mono text-sm font-semibold text-slate-600 align-top">
+                      {tender.id}
+                    </TableCell>
                     <TableCell>
-                      <div className="flex flex-col gap-0.5">
-                        <span className="font-mono text-xs font-bold text-slate-700">{tender.id}</span>
-                        {isHighRisk && (
-                          <span className="flex items-center gap-1 text-xs text-red-600 font-semibold">
-                            <AlertTriangle className="h-3 w-3" /> High Risk
-                          </span>
-                        )}
-                      </div>
-                    </TableCell>
-
-                    {/* Title */}
-                    <TableCell>
-                      <div className="flex flex-col gap-0.5">
-                        <span className="font-semibold text-slate-800 text-sm">{tender.title}</span>
-                        <span className="text-xs text-slate-500 flex items-center gap-1">
-                          <Building className="h-3 w-3" /> {tender.department}
-                        </span>
-                      </div>
-                    </TableCell>
-
-                    {/* Budget */}
-                    <TableCell>
-                      <span className="font-semibold text-blue-700 text-sm flex items-center gap-0.5">
-                        <IndianRupee className="h-3.5 w-3.5" />
-                        {tender.budget}
-                      </span>
-                    </TableCell>
-
-                    {/* Deadline */}
-                    <TableCell>
-                      <span className="text-sm text-slate-600 flex items-center gap-1">
-                        <Calendar className="h-3.5 w-3.5 text-slate-400" />
-                        {tender.deadline}
-                      </span>
-                    </TableCell>
-
-                    {/* Status */}
-                    <TableCell>
-                      <Badge variant="outline" className={`flex items-center w-fit ${status.color}`}>
-                        {status.icon}{status.label}
-                      </Badge>
-                    </TableCell>
-
-                    {/* Bids Count */}
-                    <TableCell className="text-center">
-                      <div className="flex items-center justify-center gap-1">
-                        <Users className="h-3.5 w-3.5 text-slate-400" />
-                        <span className="font-bold text-slate-800">{tender.bidsCount}</span>
-                      </div>
-                    </TableCell>
-
-                    {/* Avg Risk */}
-                    <TableCell className="text-center">
-                      <div className="flex flex-col items-center gap-1">
-                        <Badge variant="outline" className={riskBadge(tender.avgRiskScore)}>
-                          {riskLabel(tender.avgRiskScore)} · {tender.avgRiskScore}%
-                        </Badge>
-                        <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${
-                              tender.avgRiskScore < 30 ? "bg-green-500" :
-                              tender.avgRiskScore < 60 ? "bg-amber-500" : "bg-red-500"
-                            }`}
-                            style={{ width: `${tender.avgRiskScore}%` }}
-                          />
+                      <div className="space-y-1">
+                        <p className="font-bold text-slate-900 line-clamp-1">{tender.title}</p>
+                        <div className="flex items-center gap-3 text-xs text-slate-500">
+                          <span className="flex items-center gap-1"><Building className="h-3 w-3" /> {tender.department}</span>
+                          <span className="flex items-center gap-1"><IndianRupee className="h-3 w-3" /> {tender.budget}</span>
+                          <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> Deadline: {tender.deadline}</span>
                         </div>
                       </div>
                     </TableCell>
-
-                    {/* Action */}
-                    <TableCell className="text-right">
+                    <TableCell className="align-top">
+                      <Badge variant="outline" className={conf.color}>
+                        {conf.icon} {conf.label}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-center align-top">
+                      <div className="inline-flex items-center justify-center bg-slate-100 text-slate-700 rounded-full h-8 w-8 font-bold text-sm">
+                        {tender.bidsCount}
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-center align-top">
+                      {tender.bidsCount > 0 ? (
+                        <div className="flex flex-col items-center space-y-1">
+                          <Badge variant="outline" className={riskBadge(tender.avgRiskScore)}>
+                            {tender.avgRiskScore}% Score
+                          </Badge>
+                          <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                            {riskLabel(tender.avgRiskScore)} Risk
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 text-sm font-medium">—</span>
+                      )}
+                    </TableCell>
+                    <TableCell className="text-right align-top">
                       <Link href={`/officer/tenders/${tender.id}`}>
-                        <Button
-                          size="sm"
-                          className={`${
-                            isHighRisk
-                              ? "bg-red-600 hover:bg-red-700"
-                              : "bg-blue-700 hover:bg-blue-800"
-                          } text-white`}
-                        >
-                          <Eye className="mr-1.5 h-4 w-4" />
-                          {isHighRisk ? "Urgent Review" : "Review Bids"}
+                        <Button size="sm" variant="outline" className="text-blue-700 border-blue-200 hover:bg-blue-50">
+                          <Eye className="mr-1.5 h-4 w-4" /> View Bids
                         </Button>
                       </Link>
                     </TableCell>
                   </TableRow>
                 );
               })}
+              {tenders.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={6} className="text-center py-10 text-slate-500">
+                    No tenders found.
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </CardContent>

@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { mockBidders, mockTenders } from "@/lib/mock-data";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import {
   Search, AlertTriangle, CheckCircle, XCircle, ShieldCheck,
-  Eye, Users, TrendingUp, Building, IndianRupee, FileText
+  Eye, Users, TrendingUp, Building, IndianRupee, FileText, Loader2
 } from "lucide-react";
 
-// ─── Build enriched bidder directory across ALL tenders ─────────────────────
-// Group by company name, aggregate scores
 type EnrichedBidder = {
   companyName: string;
   bids: number;
@@ -27,40 +25,6 @@ type EnrichedBidder = {
   financialTurnover: string;
   rank: number;
 };
-
-function buildDirectory(): EnrichedBidder[] {
-  const map: Record<string, EnrichedBidder> = {};
-
-  mockBidders.forEach((b) => {
-    if (!map[b.companyName]) {
-      map[b.companyName] = {
-        companyName: b.companyName,
-        bids: 0,
-        avgScore: 0,
-        highestRisk: "Low",
-        everFlagged: false,
-        tenders: [],
-        gstnStatus: b.verification.gstn.status,
-        panStatus: b.verification.pan.status,
-        udyamStatus: b.verification.udyam.status,
-        financialTurnover: b.financialTurnover,
-        rank: 0,
-      };
-    }
-    const entry = map[b.companyName];
-    entry.bids += 1;
-    entry.avgScore = Math.round((entry.avgScore * (entry.bids - 1) + b.complianceScore) / entry.bids);
-    if (!entry.tenders.includes(b.tenderId)) entry.tenders.push(b.tenderId);
-    if (b.riskTag === "High") { entry.highestRisk = "High"; entry.everFlagged = true; }
-    else if (b.riskTag === "Medium" && entry.highestRisk !== "High") entry.highestRisk = "Medium";
-    if (b.documentFlags.tamperingDetected) entry.everFlagged = true;
-  });
-
-  // Sort by avgScore desc, then assign rank
-  const sorted = Object.values(map).sort((a, b) => b.avgScore - a.avgScore);
-  sorted.forEach((entry, idx) => { entry.rank = idx + 1; });
-  return sorted;
-}
 
 const rankLabel = (rank: number) => ["L1", "L2", "L3", "L4", "L5"][rank - 1] ?? `L${rank}`;
 const rankColor = (rank: number) => {
@@ -86,9 +50,75 @@ const apiStatusIcon = (status: string) => {
 };
 
 export default function BidderDirectoryPage() {
-  const directory = buildDirectory();
+  const [directory, setDirectory] = useState<EnrichedBidder[]>([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<"All" | "Low" | "Medium" | "High" | "Flagged">("All");
+
+  useEffect(() => {
+    const fetchBids = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/officer/bids');
+        const json = await res.json();
+        
+        if (json.success && json.data) {
+          const map: Record<string, EnrichedBidder> = {};
+          
+          json.data.forEach((b: any) => {
+            const compName = b.company_name || "Unknown Company";
+            if (!map[compName]) {
+              map[compName] = {
+                companyName: compName,
+                bids: 0,
+                avgScore: 0,
+                highestRisk: "Low",
+                everFlagged: false,
+                tenders: [],
+                gstnStatus: b.aiScore > 0 ? "Verified" : "Pending", // basic mock since we don't have historical flags saved natively yet
+                panStatus: b.aiScore > 0 ? "Verified" : "Pending",
+                udyamStatus: b.aiScore > 0 ? "Verified" : "Pending",
+                financialTurnover: "Rs 5.5 Cr", // mocked for directory view
+                rank: 0,
+              };
+            }
+            const entry = map[compName];
+            entry.bids += 1;
+            if (b.aiScore > 0) {
+              entry.avgScore = Math.round((entry.avgScore * (entry.bids - 1) + b.aiScore) / entry.bids);
+            }
+            if (!entry.tenders.includes(b.tender_id)) entry.tenders.push(b.tender_id);
+            
+            // Risk logic
+            const score = b.aiScore > 0 ? b.aiScore : 100;
+            if (score < 40) { entry.highestRisk = "High"; entry.everFlagged = true; }
+            else if (score < 70 && entry.highestRisk !== "High") entry.highestRisk = "Medium";
+            
+            if (b.flags && b.flags.length > 0) entry.everFlagged = true;
+          });
+
+          // Sort by avgScore desc, then assign rank
+          const sorted = Object.values(map).sort((a, b) => b.avgScore - a.avgScore);
+          sorted.forEach((entry, idx) => { entry.rank = idx + 1; });
+          
+          setDirectory(sorted);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBids();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading bidder directory...</p>
+      </div>
+    );
+  }
 
   const filtered = directory.filter((b) => {
     const matchSearch = b.companyName.toLowerCase().includes(search.toLowerCase());

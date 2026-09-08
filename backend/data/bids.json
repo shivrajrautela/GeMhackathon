@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "id": "BID-123456",
+    "tender_id": "TND-2026-001",
+    "status": "Under Review"
+  }
+]
