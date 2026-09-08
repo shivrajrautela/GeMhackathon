@@ -591,8 +591,8 @@ export default function BidReviewPage() {
                             <div><span className="text-slate-500 block">Udyam No.</span><span className="font-mono text-slate-900">{verifyResult.extractedData.udyamRegistration}</span></div>
                             <div>
                               <span className="text-slate-500 block">Tampering Signs</span>
-                              <span className={`font-bold ${verifyResult.extractedData.tamperingSigns ? 'text-red-600' : 'text-green-600'}`}>
-                                {verifyResult.extractedData.tamperingSigns ? "DETECTED" : "None Detected"}
+                              <span className={`font-bold ${verifyResult.extractedData.tamperingSigns === true || verifyResult.extractedData.tamperingSigns === "true" ? 'text-red-600' : 'text-green-600'}`}>
+                                {verifyResult.extractedData.tamperingSigns === true || verifyResult.extractedData.tamperingSigns === "true" ? "DETECTED" : "None Detected"}
                               </span>
                             </div>
                           </div>

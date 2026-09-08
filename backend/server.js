@@ -44,6 +44,13 @@ app.get('/api/ping', (req, res) => res.json({ message: "Backend is running! 🚀
 const fs = require('fs');
 const path = require('path');
 
+// Helper: Load the Mock Government Database
+const getGovDB = () => {
+    const filePath = path.join(__dirname, 'data', 'gov_database.json');
+    if (!fs.existsSync(filePath)) return [];
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+};
+
 // ==========================================
 // 🏢 TENDERS API
 // ==========================================
@@ -288,7 +295,9 @@ app.post('/api/officer/bids/:id/verify', async (req, res) => {
         let score = 100;
         let flags = [];
         
-        if (extractedData.tamperingSigns) {
+        // tamperingSigns can be string "true"/"false" or boolean
+        const isTampered = extractedData.tamperingSigns === true || extractedData.tamperingSigns === "true";
+        if (isTampered) {
             score -= 40;
             flags.push("AI Detected potential document tampering or alterations.");
         }
@@ -356,7 +365,7 @@ app.post('/api/officer/bids/:id/verify', async (req, res) => {
 app.post('/api/officer/bids/:id/decision', (req, res) => {
     try {
         const bidId = req.params.id;
-        const { status, officer_id, comments } = req.body; // 'Approved' or 'Rejected'
+        const { decision, officer_id, comments } = req.body; // 'Approved' or 'Rejected'
         
         const bidsPath = getBidsFile();
         const bids = JSON.parse(fs.readFileSync(bidsPath, 'utf8'));
@@ -365,7 +374,7 @@ app.post('/api/officer/bids/:id/decision', (req, res) => {
         if (bidIndex === -1) return res.status(404).json({ success: false, error: 'Bid not found' });
         
         // Update Bid
-        bids[bidIndex].status = status;
+        bids[bidIndex].status = decision;
         bids[bidIndex].reviewedOn = new Date().toISOString();
         bids[bidIndex].comments = comments || "";
         fs.writeFileSync(bidsPath, JSON.stringify(bids, null, 2));
@@ -380,7 +389,7 @@ app.post('/api/officer/bids/:id/decision', (req, res) => {
             id: `ADT-${Date.now()}`,
             timestamp: new Date().toISOString(),
             bid_id: bidId,
-            action: status.toUpperCase(),
+            action: decision.toUpperCase(),
             officer_id: officer_id || "OFFICER-1",
             previous_hash: previousHash
         };
