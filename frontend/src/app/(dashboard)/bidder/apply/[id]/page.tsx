@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { supabase } from "@/lib/supabaseClient";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft, ArrowRight, UploadCloud, FileText, CheckCircle,
-  Building2, User, Phone, Mail, Hash, MapPin, Eye, Send, X
+  Building2, User, Phone, Mail, Hash, MapPin, Eye, Send, X, Loader2
 } from "lucide-react";
 
 // Mock tender details — in production, fetch by ID from backend
@@ -52,15 +53,39 @@ export default function ApplicationPage() {
     if (file) setUploadedFile(file);
   };
 
-  const handleSubmit = () => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
     if (uploadedFile) {
+      setSubmitting(true);
       // Convert file to base64 for the Gemini AI backend to process later
       const reader = new FileReader();
-      reader.onload = (event) => {
-        const base64String = (event.target?.result as string).split(',')[1]; // Remove data URL prefix
+      reader.onload = async (event) => {
+        const base64String = (event.target?.result as string).split(',')[1];
         localStorage.setItem("gem_demo_pdf_base64", base64String);
         console.log("PDF saved to localStorage for AI Analysis!");
-        setStep("submitted");
+
+        try {
+          const { data: { user } } = await supabase.auth.getUser();
+          
+          if (user) {
+            // Send submission record to backend
+            await fetch("http://localhost:5000/api/bids", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                tender_id: tenderId,
+                profile_id: user.id,
+                company_name: profile.companyName
+              })
+            });
+          }
+        } catch (err) {
+          console.error("Failed to submit bid to backend:", err);
+        } finally {
+          setSubmitting(false);
+          setStep("submitted");
+        }
       };
       reader.readAsDataURL(uploadedFile);
     } else {
@@ -156,7 +181,6 @@ export default function ApplicationPage() {
           </CardContent>
         </Card>
 
-        {/* Actions */}
         <div className="flex items-center gap-4">
           <Button variant="outline" onClick={() => setStep("form")} className="border-slate-300">
             <ArrowLeft className="mr-2 h-4 w-4" /> Edit Application
@@ -164,9 +188,13 @@ export default function ApplicationPage() {
           <Button
             className="bg-green-700 hover:bg-green-800 px-8"
             onClick={handleSubmit}
-            disabled={!uploadedFile}
+            disabled={!uploadedFile || submitting}
           >
-            <Send className="mr-2 h-4 w-4" /> Confirm & Submit
+            {submitting ? (
+              <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</>
+            ) : (
+              <><Send className="mr-2 h-4 w-4" /> Confirm & Submit</>
+            )}
           </Button>
         </div>
       </div>

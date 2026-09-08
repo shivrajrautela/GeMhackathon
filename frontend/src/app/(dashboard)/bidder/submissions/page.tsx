@@ -1,64 +1,64 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabaseClient";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   FileText, Clock, CheckCircle, XCircle, AlertTriangle,
-  Calendar, IndianRupee, Building, Eye, ArrowRight
+  Calendar, IndianRupee, Building, Eye, ArrowRight, Loader2
 } from "lucide-react";
-
-// Mock submissions — will connect to backend later
-const mySubmissions = [
-  {
-    id: "APP-001",
-    tenderId: "TND-2026-001",
-    tenderTitle: "Supply of Office Furniture",
-    department: "Ministry of Education",
-    value: "₹45 Lakhs",
-    submittedOn: "05 Sep 2026",
-    deadline: "30 Sep 2026",
-    status: "Under Review",
-    aiScore: 82,
-    flags: [],
-  },
-  {
-    id: "APP-002",
-    tenderId: "TND-2026-002",
-    tenderTitle: "IT Infrastructure Upgrade – DRDO",
-    department: "DRDO",
-    value: "₹1.2 Crore",
-    submittedOn: "06 Sep 2026",
-    deadline: "10 Oct 2026",
-    status: "Approved",
-    aiScore: 95,
-    flags: [],
-  },
-  {
-    id: "APP-003",
-    tenderId: "TND-2026-003",
-    tenderTitle: "Stationery & Printing Materials",
-    department: "Ministry of Finance",
-    value: "₹8 Lakhs",
-    submittedOn: "07 Sep 2026",
-    deadline: "15 Oct 2026",
-    status: "Rejected",
-    aiScore: 34,
-    flags: ["Document tampering detected", "GSTIN mismatch"],
-  },
-];
 
 const statusConfig: Record<string, { color: string; icon: React.ReactNode }> = {
   "Under Review": {
     color: "bg-amber-50 text-amber-800 border-amber-200",
     icon: <Clock className="h-3.5 w-3.5 mr-1" />,
   },
-  Approved: {
+  "Approved": {
     color: "bg-green-50 text-green-700 border-green-200",
     icon: <CheckCircle className="h-3.5 w-3.5 mr-1" />,
   },
-  Rejected: {
+  "Rejected": {
+    color: "bg-red-50 text-red-700 border-red-200",
+    icon: <XCircle className="h-3.5 w-3.5 mr-1" />,
+  },
+};
+
+export default function MySubmissionsPage() {
+  const [bids, setBids] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBids = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const res = await fetch(`http://localhost:5000/api/bids/${user.id}`);
+          const json = await res.json();
+          if (json.success) {
+            setBids(json.data);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch submissions:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBids();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 space-y-4">
+        <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+        <p className="text-slate-500 font-medium">Loading your submissions...</p>
+      </div>
+    );
+  }
+  "Rejected": {
     color: "bg-red-50 text-red-700 border-red-200",
     icon: <XCircle className="h-3.5 w-3.5 mr-1" />,
   },
@@ -70,10 +70,9 @@ const scoreColor = (score: number) => {
   return "text-red-600";
 };
 
-export default function MySubmissionsPage() {
-  const approvedCount = mySubmissions.filter(s => s.status === "Approved").length;
-  const reviewCount = mySubmissions.filter(s => s.status === "Under Review").length;
-  const rejectedCount = mySubmissions.filter(s => s.status === "Rejected").length;
+  const approvedCount = bids.filter(s => s.status === "Approved").length;
+  const reviewCount = bids.filter(s => s.status === "Under Review").length;
+  const rejectedCount = bids.filter(s => s.status === "Rejected").length;
 
   return (
     <div className="space-y-6">
@@ -129,7 +128,7 @@ export default function MySubmissionsPage() {
         </Card>
       ) : (
         <div className="space-y-4">
-          {mySubmissions.map((sub) => {
+          {bids.map((sub) => {
             const config = statusConfig[sub.status];
             return (
               <Card key={sub.id} className="shadow-sm hover:shadow-md transition-shadow">

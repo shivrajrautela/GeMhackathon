@@ -125,37 +125,87 @@ app.post('/api/profile', (req, res) => {
 });
 
 // ==========================================
-// 📄 BIDS API
+// 📄 BIDS API (Phase 3)
 // ==========================================
+
+// Helper to initialize bids file
+const getBidsFile = () => {
+    const filePath = path.join(__dirname, 'data', 'bids.json');
+    if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify([]));
+    return filePath;
+};
+
 // All bids (for Officer Dashboard)
-app.get('/api/bids', async (req, res) => {
-    const { data, error } = await supabase
-        .from('bids')
-        .select(`*, profiles(company_name, tax_id), tenders(title)`)
-        .order('created_at', { ascending: false });
-    if (error) return res.status(500).json({ error: error.message });
-    res.json({ success: true, data });
+app.get('/api/bids', (req, res) => {
+    try {
+        const filePath = getBidsFile();
+        let bids = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        
+        // Enrich with tender details
+        const tendersPath = path.join(__dirname, 'data', 'tenders.json');
+        if (fs.existsSync(tendersPath)) {
+            const tenders = JSON.parse(fs.readFileSync(tendersPath, 'utf8'));
+            bids = bids.map(b => {
+                const t = tenders.find(x => x.id === b.tender_id) || {};
+                return { ...b, tenderTitle: t.title, department: t.department, value: t.budget, deadline: t.deadline };
+            });
+        }
+        
+        res.json({ success: true, data: bids });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // My submissions (for Bidder Dashboard)
-app.get('/api/bids/:profile_id', async (req, res) => {
-    const { data, error } = await supabase
-        .from('bids')
-        .select(`*, tenders(title)`)
-        .eq('profile_id', req.params.profile_id);
-    if (error) return res.status(500).json({ error: error.message });
-    res.json({ success: true, data });
+app.get('/api/bids/:profile_id', (req, res) => {
+    try {
+        const filePath = getBidsFile();
+        let bids = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        let userBids = bids.filter(b => b.profile_id === req.params.profile_id);
+        
+        // Enrich with tender details
+        const tendersPath = path.join(__dirname, 'data', 'tenders.json');
+        if (fs.existsSync(tendersPath)) {
+            const tenders = JSON.parse(fs.readFileSync(tendersPath, 'utf8'));
+            userBids = userBids.map(b => {
+                const t = tenders.find(x => x.id === b.tender_id) || {};
+                return { ...b, tenderTitle: t.title, department: t.department, value: t.budget, deadline: t.deadline };
+            });
+        }
+
+        res.json({ success: true, data: userBids });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Submit a new bid
-app.post('/api/bids', async (req, res) => {
-    const { tender_id, profile_id, document_url } = req.body;
-    const { data, error } = await supabase
-        .from('bids')
-        .insert([{ tender_id, profile_id, document_url, status: 'pending', risk_score: null }])
-        .select();
-    if (error) return res.status(500).json({ error: error.message });
-    res.json({ success: true, data: data[0] });
+app.post('/api/bids', (req, res) => {
+    try {
+        const { tender_id, profile_id, company_name } = req.body;
+        const filePath = getBidsFile();
+        const bids = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+        const newBid = {
+            id: `BID-${Date.now().toString().slice(-6)}`,
+            tender_id,
+            tenderId: tender_id, // Alias for frontend
+            profile_id,
+            company_name: company_name || "Unknown Company",
+            status: 'Under Review',
+            aiScore: 0,
+            flags: [],
+            submittedOn: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+        };
+
+        bids.unshift(newBid);
+        fs.writeFileSync(filePath, JSON.stringify(bids, null, 2));
+
+        res.json({ success: true, data: newBid });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // ==========================================
