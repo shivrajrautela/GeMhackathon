@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Tender {
+  id           String   @id @default(cuid())
+  title        String
+  department   String
+  description  String
+  bidsCount    Int      @default(0)
+  budget       String
+  deadline     String
+  status       String   // Active, Under Review, Closed
+  createdAt    DateTime @default(now())
+}
+
+model Bidder {
+  id              String   @id @default(cuid())
+  companyName     String
+  tenderId        String
+  status          String   // Pending, Approved, Rejected
+  riskTag         String   // Low, Medium, High
+  complianceScore Int
+  gstn            String
+  pan             String
+  udyam           String
+  flags           String   // JSON stringified array of flags
+  submittedAt     DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  timestamp DateTime @default(now())
+  actor     String
+  event     String
+  severity  String   // Info, Warning, Critical
+}

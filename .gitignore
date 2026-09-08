@@ -21,3 +21,6 @@ yarn-error.log*
 
 # Temporary folder for friend repo
 myfriendfrontendrepo/
+
+# Local backup
+frontend-vite-backup/
