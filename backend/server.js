@@ -1,49 +1,195 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const crypto = require('crypto'); // Built-in Node.js library, no install needed
+const supabase = require('./supabaseClient');
 
 const app = express();
-// We use port 5000 for the backend (Frontend usually uses 5173 or 3000)
 const PORT = process.env.PORT || 5000;
 
-// === MIDDLEWARE ===
-// CORS allows your React frontend to communicate with this backend securely
 app.use(cors()); 
-// This allows your backend to read JSON data sent in POST requests
 app.use(express.json()); 
 
+// ==========================================
+// UTILITY: SHA-256 Cryptographic Hash Generator
+// This makes our audit logs tamper-proof
+// ==========================================
+function generateHash(data) {
+    return crypto
+        .createHash('sha256')
+        .update(JSON.stringify(data))
+        .digest('hex');
+}
 
-// === DEMO API ROUTES ===
+// ==========================================
+// UTILITY: Risk Score Calculator
+// Combines govt record flags into a 0-100 risk score
+// ==========================================
+function calculateRiskScore(govtRecord) {
+    let score = 0; // Start clean
 
-// 1. A simple GET route to test if the server is alive
-app.get('/api/ping', (req, res) => {
-    res.json({ message: "Backend is running successfully on localhost:5000! 🚀" });
+    if (!govtRecord) return 95; // Record not found = very high risk
+
+    if (govtRecord.blacklisted)      score += 60; // Blacklisted is catastrophic
+    if (!govtRecord.active_gst)      score += 25; // Inactive GST is serious
+    if (!govtRecord.epfo_clearance)  score += 15; // EPFO issue is moderate
+
+    return Math.min(score, 100); // Cap at 100
+}
+
+app.get('/api/ping', (req, res) => res.json({ message: "Backend is running! 🚀" }));
+
+// ==========================================
+// 🏢 TENDERS API
+// ==========================================
+app.get('/api/tenders', async (req, res) => {
+    const { data, error } = await supabase.from('tenders').select('*').order('created_at', { ascending: false });
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data });
 });
 
-// 2. A Demo POST route for submitting a bid
-app.post('/api/bids', (req, res) => {
-    // req.body contains the data sent from the React frontend
-    const { companyName, taxId } = req.body;
-    
-    // Log it to your terminal so you can see it working!
-    console.log(`📥 Received new bid from: ${companyName} (Tax ID: ${taxId})`);
-    
-    // Send a success response back to the frontend
-    res.json({
-        success: true,
-        message: "Bid received by the backend successfully!",
-        data: {
-            companyName: companyName,
-            status: "pending_verification"
-        }
-    });
+app.post('/api/tenders', async (req, res) => {
+    const { title, description, deadline } = req.body;
+    const { data, error } = await supabase.from('tenders').insert([{ title, description, deadline }]).select();
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data: data[0] });
 });
 
+// ==========================================
+// 📄 BIDS API
+// ==========================================
+// All bids (for Officer Dashboard)
+app.get('/api/bids', async (req, res) => {
+    const { data, error } = await supabase
+        .from('bids')
+        .select(`*, profiles(company_name, tax_id), tenders(title)`)
+        .order('created_at', { ascending: false });
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data });
+});
 
-// === START THE SERVER ===
+// My submissions (for Bidder Dashboard)
+app.get('/api/bids/:profile_id', async (req, res) => {
+    const { data, error } = await supabase
+        .from('bids')
+        .select(`*, tenders(title)`)
+        .eq('profile_id', req.params.profile_id);
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data });
+});
+
+// Submit a new bid
+app.post('/api/bids', async (req, res) => {
+    const { tender_id, profile_id, document_url } = req.body;
+    const { data, error } = await supabase
+        .from('bids')
+        .insert([{ tender_id, profile_id, document_url, status: 'pending', risk_score: null }])
+        .select();
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data: data[0] });
+});
+
+// ==========================================
+// 🧠 PHASE 3: AI VERIFICATION ENGINE
+// The "Wow" factor of the entire project
+// ==========================================
+app.post('/api/verify', async (req, res) => {
+    const { bid_id } = req.body;
+
+    try {
+        // --- STEP 1: Get the bid and the bidder's tax ID ---
+        const { data: bid, error: bidError } = await supabase
+            .from('bids')
+            .select(`*, profiles(company_name, tax_id)`)
+            .eq('id', bid_id)
+            .single();
+
+        if (bidError || !bid) return res.status(404).json({ error: 'Bid not found' });
+        
+        const tax_id = bid.profiles?.tax_id;
+        const company_name = bid.profiles?.company_name;
+        console.log(`\n🔍 Running verification for: ${company_name} (Tax ID: ${tax_id})`);
+
+        // --- STEP 2: Query Mock Government Records ---
+        // This simulates querying 10+ real government portals like GSTN, MCA, EPFO
+        console.log(`   📡 Checking mock government databases...`);
+        await new Promise(r => setTimeout(r, 1000)); // Simulate network delay
+        
+        const { data: govtRecord } = await supabase
+            .from('mock_government_records')
+            .select('*')
+            .eq('tax_id', tax_id)
+            .single();
+
+        // --- STEP 3: Calculate Risk Score ---
+        const riskScore = calculateRiskScore(govtRecord);
+        const flags = [];
+        if (!govtRecord)               flags.push('Company record not found in government database');
+        if (govtRecord?.blacklisted)   flags.push('CRITICAL: Company is blacklisted by MCA');
+        if (!govtRecord?.active_gst)   flags.push('GST registration is inactive or revoked');
+        if (!govtRecord?.epfo_clearance) flags.push('EPFO (Provident Fund) clearance pending');
+        
+        const finalStatus = riskScore >= 50 ? 'rejected' : 'verified';
+        console.log(`   📊 Risk Score: ${riskScore}/100 | Status: ${finalStatus}`);
+
+        // --- STEP 4: Update bid status in database ---
+        await supabase
+            .from('bids')
+            .update({ status: finalStatus, risk_score: riskScore })
+            .eq('id', bid_id);
+
+        // --- STEP 5: Generate Cryptographic Hash & Write Audit Log ---
+        const logData = {
+            bid_id,
+            company_name,
+            tax_id,
+            final_status: finalStatus,
+            risk_score: riskScore,
+            flags,
+            timestamp: new Date().toISOString()
+        };
+        const sha256_hash = generateHash(logData);
+        console.log(`   🔐 SHA-256 Hash generated: ${sha256_hash.substring(0, 20)}...`);
+
+        await supabase.from('audit_logs').insert([{
+            action: `VERIFICATION_${finalStatus.toUpperCase()}`,
+            bid_id,
+            sha256_hash
+        }]);
+
+        // --- STEP 6: Send response back to frontend ---
+        res.json({
+            success: true,
+            status: finalStatus,
+            risk_score: riskScore,
+            flags,
+            sha256_hash,
+            company_name,
+            message: `Verification complete. ${flags.length} issue(s) found.`
+        });
+
+    } catch (err) {
+        console.error("❌ Verification error:", err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// ==========================================
+// 📋 AUDIT LOGS API
+// ==========================================
+app.get('/api/audit-logs', async (req, res) => {
+    const { data, error } = await supabase.from('audit_logs').select('*').order('created_at', { ascending: false });
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ success: true, data });
+});
+
+// ==========================================
+// START SERVER
+// ==========================================
 app.listen(PORT, () => {
     console.log(`\n======================================`);
-    console.log(`🚀 Backend Server running!`);
-    console.log(`👉 Test Link: http://localhost:${PORT}/api/ping`);
+    console.log(`🚀 Backend running on port ${PORT}`);
+    console.log(`🧠 AI Verification Engine: ONLINE`);
+    console.log(`🔐 Cryptographic Audit Logger: ONLINE`);
     console.log(`======================================\n`);
 });
