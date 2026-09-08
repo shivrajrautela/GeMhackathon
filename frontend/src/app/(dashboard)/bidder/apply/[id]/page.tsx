@@ -69,14 +69,15 @@ export default function ApplicationPage() {
           const { data: { user } } = await supabase.auth.getUser();
           
           if (user) {
-            // Send submission record to backend
+            // Send submission record to backend (including PDF base64!)
             await fetch("http://localhost:5000/api/bids", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 tender_id: tenderId,
                 profile_id: user.id,
-                company_name: profile.companyName
+                company_name: profile.companyName,
+                pdfBase64: base64String
               })
             });
           }

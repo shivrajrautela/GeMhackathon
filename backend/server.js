@@ -183,12 +183,24 @@ app.get('/api/bids/:profile_id', (req, res) => {
 // Submit a new bid
 app.post('/api/bids', (req, res) => {
     try {
-        const { tender_id, profile_id, company_name } = req.body;
+        const { tender_id, profile_id, company_name, pdfBase64 } = req.body;
         const filePath = getBidsFile();
         const bids = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
+        const bidId = `BID-${Date.now().toString().slice(-6)}`;
+        let documentPath = null;
+
+        // Ensure uploads directory exists
+        const uploadsDir = path.join(__dirname, 'data', 'uploads');
+        if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
+
+        if (pdfBase64) {
+            documentPath = path.join(uploadsDir, `${bidId}.txt`);
+            fs.writeFileSync(documentPath, pdfBase64);
+        }
+
         const newBid = {
-            id: `BID-${Date.now().toString().slice(-6)}`,
+            id: bidId,
             tender_id,
             tenderId: tender_id, // Alias for frontend
             profile_id,
@@ -196,6 +208,7 @@ app.post('/api/bids', (req, res) => {
             status: 'Under Review',
             aiScore: 0,
             flags: [],
+            documentPath, // Saved in DB!
             submittedOn: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
         };
 
@@ -237,10 +250,104 @@ app.get('/api/officer/stats', (req, res) => {
 app.get('/api/officer/bids', (req, res) => {
     try {
         const bids = JSON.parse(fs.readFileSync(getBidsFile(), 'utf8'));
-        
-        // Optionally attach tender data here if needed, or send raw
         res.json({ success: true, data: bids });
     } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// 1.6. RUN AI VERIFICATION ENGINE (Phase 3 Core)
+app.post('/api/officer/bids/:id/verify', async (req, res) => {
+    try {
+        const bidId = req.params.id;
+        const bidsPath = getBidsFile();
+        const bids = JSON.parse(fs.readFileSync(bidsPath, 'utf8'));
+        
+        const bidIndex = bids.findIndex(b => b.id === bidId);
+        if (bidIndex === -1) return res.status(404).json({ success: false, error: 'Bid not found' });
+        
+        const bid = bids[bidIndex];
+        
+        if (!bid.documentPath || !fs.existsSync(bid.documentPath)) {
+            return res.status(400).json({ success: false, error: 'No PDF document found for this bid.' });
+        }
+        
+        const base64Pdf = fs.readFileSync(bid.documentPath, 'utf8');
+        
+        // 1. Gemini OCR & Extraction
+        const extractedData = await analyzeBidDocument(base64Pdf);
+        
+        // 2. Mock Gov API Cross-Check
+        const govDb = getGovDB();
+        const govVerification = {
+            pan: { match: false, details: null },
+            gstin: { match: false, details: null },
+            udyam: { match: false, details: null }
+        };
+        
+        let score = 100;
+        let flags = [];
+        
+        if (extractedData.tamperingSigns) {
+            score -= 40;
+            flags.push("AI Detected potential document tampering or alterations.");
+        }
+        
+        // Check PAN
+        const panRecord = govDb.find(r => r.pan_number === extractedData.pan);
+        if (panRecord) {
+            govVerification.pan.match = true;
+            govVerification.pan.details = panRecord.pan_details;
+        } else {
+            score -= 25;
+            flags.push(`PAN ${extractedData.pan} not found in Income Tax records.`);
+        }
+        
+        // Check GSTIN
+        const gstRecord = govDb.find(r => r.gstin === extractedData.gstin);
+        if (gstRecord) {
+            govVerification.gstin.match = true;
+            govVerification.gstin.details = gstRecord.gst_details;
+            if (gstRecord.gst_details.status !== "Active") {
+                score -= 30;
+                flags.push("GSTIN registration is Inactive or Cancelled.");
+            }
+        } else {
+            score -= 25;
+            flags.push(`GSTIN ${extractedData.gstin} is invalid or mismatched.`);
+        }
+        
+        // Check Udyam
+        const udyamRecord = govDb.find(r => r.udyam_number === extractedData.udyamRegistration);
+        if (udyamRecord) {
+            govVerification.udyam.match = true;
+            govVerification.udyam.details = udyamRecord.udyam_details;
+        } else if (extractedData.udyamRegistration !== "NOT_FOUND") {
+            score -= 15;
+            flags.push(`Udyam MSME Certificate ${extractedData.udyamRegistration} not found.`);
+        }
+
+        // Generate AI Summary Dashboard text
+        const summary = `AI Analysis complete for ${extractedData.companyName}. ` +
+            (score >= 70 ? `All critical government databases align. The bidder is highly compliant.` 
+            : `Warning: Major discrepancies found. ${flags[0]}`);
+
+        // Update the Bid in DB
+        bids[bidIndex].aiScore = Math.max(0, score);
+        bids[bidIndex].flags = flags;
+        bids[bidIndex].extractedData = extractedData;
+        bids[bidIndex].govVerification = govVerification;
+        bids[bidIndex].aiSummary = summary;
+        
+        fs.writeFileSync(bidsPath, JSON.stringify(bids, null, 2));
+
+        res.json({ 
+            success: true, 
+            data: bids[bidIndex] 
+        });
+        
+    } catch (err) {
+        console.error("AI Verification Error:", err);
         res.status(500).json({ success: false, error: err.message });
     }
 });
