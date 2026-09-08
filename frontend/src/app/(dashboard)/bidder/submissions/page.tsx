@@ -108,7 +108,7 @@ export default function MySubmissionsPage() {
       </div>
 
       {/* Submissions List */}
-      {mySubmissions.length === 0 ? (
+      {bids.length === 0 ? (
         <Card className="shadow-sm">
           <CardContent className="flex flex-col items-center justify-center py-16 text-center space-y-4">
             <FileText className="h-12 w-12 text-slate-300" />
