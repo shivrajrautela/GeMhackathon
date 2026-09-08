@@ -92,7 +92,7 @@ export default function CompanyProfilePage() {
   }
 
   return (
-    <div className="space-y-6 max-w-3xl">
+    <div className="space-y-6 max-w-3xl mx-auto">
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Company Profile</h2>
         <p className="text-slate-500 mt-1">Fill in your company details once — they will auto-fill all bid applications.</p>

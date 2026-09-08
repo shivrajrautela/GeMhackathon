@@ -117,7 +117,7 @@ export default function ApplicationPage() {
   // ─── STEP: PREVIEW ───────────────────────────────────────────────────
   if (step === "preview") {
     return (
-      <div className="space-y-6 max-w-2xl">
+      <div className="space-y-6 max-w-2xl mx-auto">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/bidder/apply" className="hover:text-blue-600">Submit Bid</Link>
@@ -203,7 +203,7 @@ export default function ApplicationPage() {
 
   // ─── STEP: FORM ──────────────────────────────────────────────────────
   return (
-    <div className="space-y-6 max-w-2xl">
+    <div className="space-y-6 max-w-4xl mx-auto">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-slate-500">
         <Link href="/bidder/apply" className="hover:text-blue-600">Submit Bid</Link>
