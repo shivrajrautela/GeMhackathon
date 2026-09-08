@@ -209,6 +209,86 @@ app.post('/api/bids', (req, res) => {
 });
 
 // ==========================================
+// 🏢 PROCUREMENT OFFICER APIs (Phase 5)
+// ==========================================
+
+const getAuditFile = () => {
+    const filePath = path.join(__dirname, 'data', 'audit_logs.json');
+    if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, JSON.stringify([]));
+    return filePath;
+};
+
+// 1. Officer Dashboard Stats
+app.get('/api/officer/stats', (req, res) => {
+    try {
+        const bids = JSON.parse(fs.readFileSync(getBidsFile(), 'utf8'));
+        const pending = bids.filter(b => b.status === 'Under Review').length;
+        const approved = bids.filter(b => b.status === 'Approved').length;
+        const rejected = bids.filter(b => b.status === 'Rejected').length;
+        const total = bids.length;
+        
+        res.json({ success: true, data: { pending, approved, rejected, total } });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// 2. Officer Decision (Approve/Reject) + Audit Log
+app.post('/api/officer/bids/:id/decision', (req, res) => {
+    try {
+        const bidId = req.params.id;
+        const { status, officer_id, comments } = req.body; // 'Approved' or 'Rejected'
+        
+        const bidsPath = getBidsFile();
+        const bids = JSON.parse(fs.readFileSync(bidsPath, 'utf8'));
+        
+        const bidIndex = bids.findIndex(b => b.id === bidId);
+        if (bidIndex === -1) return res.status(404).json({ success: false, error: 'Bid not found' });
+        
+        // Update Bid
+        bids[bidIndex].status = status;
+        bids[bidIndex].reviewedOn = new Date().toISOString();
+        bids[bidIndex].comments = comments || "";
+        fs.writeFileSync(bidsPath, JSON.stringify(bids, null, 2));
+
+        // Generate Audit Log
+        const auditPath = getAuditFile();
+        const audits = JSON.parse(fs.readFileSync(auditPath, 'utf8'));
+        
+        const previousHash = audits.length > 0 ? audits[audits.length - 1].hash : "0000000000000000000000000000000000000000000000000000000000000000";
+        
+        const auditRecord = {
+            id: `ADT-${Date.now()}`,
+            timestamp: new Date().toISOString(),
+            bid_id: bidId,
+            action: status.toUpperCase(),
+            officer_id: officer_id || "OFFICER-1",
+            previous_hash: previousHash
+        };
+        
+        // Use our utility to calculate SHA-256
+        auditRecord.hash = generateHash(auditRecord);
+        
+        audits.push(auditRecord);
+        fs.writeFileSync(auditPath, JSON.stringify(audits, null, 2));
+
+        res.json({ success: true, data: { bid: bids[bidIndex], audit: auditRecord } });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// 3. Get Audit Logs
+app.get('/api/officer/audit', (req, res) => {
+    try {
+        const audits = JSON.parse(fs.readFileSync(getAuditFile(), 'utf8'));
+        res.json({ success: true, data: audits });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// ==========================================
 // 🏛️ GOVERNMENT MOCK APIs (Phase 4)
 // ==========================================
 // Centralized helper to get gov database
