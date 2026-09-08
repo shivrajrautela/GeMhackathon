@@ -40,14 +40,14 @@ export default function TopNav() {
     <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950 shadow-md animate-in slide-in-from-top duration-500">
       <div className="flex h-16 items-center px-8 justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-10">
-          <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
             <div className="h-8 w-8 rounded-none bg-cyan-500 flex items-center justify-center shadow-sm shadow-cyan-900/50">
               <ShieldCheck className="h-5 w-5 text-slate-950" />
             </div>
             <span className="text-xl font-bold tracking-tight text-white">
               GeM <span className="text-cyan-400 font-medium">Verify</span>
             </span>
-          </div>
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-1">
             {links.map((link) => {
