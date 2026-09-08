@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -54,6 +54,7 @@ const scoreColor = (score: number) => {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function BidReviewPage() {
   const params   = useParams();
+  const router   = useRouter();
   const tenderId = params.id as string;
 
   const [loading, setLoading] = useState(true);
@@ -642,7 +643,7 @@ export default function BidReviewPage() {
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ decision: 'Rejected' })
                                 });
-                                window.location.href = '/officer/dashboard';
+                                router.push('/officer/dashboard');
                             }}
                         >
                             <XCircle className="mr-1.5 h-4 w-4" /> Reject Bid
@@ -657,7 +658,7 @@ export default function BidReviewPage() {
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ decision: 'Approved' })
                                 });
-                                window.location.href = '/officer/dashboard';
+                                router.push('/officer/dashboard');
                             }}
                         >
                             <CheckCircle className="mr-1.5 h-4 w-4" /> Approve Bid
