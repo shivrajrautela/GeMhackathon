@@ -58,17 +58,12 @@ export default function MySubmissionsPage() {
       </div>
     );
   }
-  "Rejected": {
-    color: "bg-red-50 text-red-700 border-red-200",
-    icon: <XCircle className="h-3.5 w-3.5 mr-1" />,
-  },
-};
 
-const scoreColor = (score: number) => {
-  if (score >= 70) return "text-green-700";
-  if (score >= 40) return "text-amber-600";
-  return "text-red-600";
-};
+  const scoreColor = (score: number) => {
+    if (score >= 70) return "text-green-700";
+    if (score >= 40) return "text-amber-600";
+    return "text-red-600";
+  };
 
   const approvedCount = bids.filter(s => s.status === "Approved").length;
   const reviewCount = bids.filter(s => s.status === "Under Review").length;
