@@ -82,9 +82,7 @@ export default function LoginPage() {
         <CardHeader className="text-center space-y-2">
           <div className="flex justify-center mb-4">
             <Link href="/">
-              <div className="h-12 w-12 bg-blue-100 hover:bg-blue-200 transition-colors rounded-sm flex items-center justify-center cursor-pointer shadow-sm">
-                <ShieldCheck className="h-6 w-6 text-blue-700" />
-              </div>
+              <img src="/logo.svg" alt="Gem-Verify Logo" className="h-20 w-auto object-contain bg-transparent cursor-pointer hover:opacity-90 drop-shadow-md" />
             </Link>
           </div>
           <CardTitle className="text-2xl font-bold tracking-tight text-slate-800">Sign In</CardTitle>

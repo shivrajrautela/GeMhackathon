@@ -21,9 +21,7 @@ export default function LandingPage() {
           
           {/* Logo - Clickable to Home */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="h-10 w-10 bg-blue-600 rounded-sm flex items-center justify-center shadow-sm">
-              <ShieldCheck className="h-6 w-6 text-white" />
-            </div>
+            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-12 w-auto object-contain drop-shadow-sm" />
             <div className="flex flex-col leading-tight">
               <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-700 transition-colors">
                 GeM <span className="text-blue-600">Verify</span>
@@ -201,7 +199,7 @@ export default function LandingPage() {
       <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-12 text-center text-sm">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center space-y-4">
           <div className="flex items-center space-x-2">
-            <ShieldCheck className="h-6 w-6 text-blue-500" />
+            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-8 w-auto object-contain drop-shadow-md" />
             <span className="text-xl font-bold tracking-tight text-white">GeM Verify</span>
           </div>
           <p className="font-medium text-slate-400">© 2026 Smart India Hackathon Prototype. Developed for the Government of India e-Marketplace.</p>

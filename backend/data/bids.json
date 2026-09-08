@@ -5,11 +5,41 @@
     "tenderId": "TND-2026-006",
     "profile_id": "d6c9b370-0703-493f-bdac-a3e1fdb8a3af",
     "company_name": "Sharma Industrial Solution",
-    "status": "Under Review",
-    "aiScore": 0,
-    "flags": [],
+    "status": "Rejected",
+    "aiScore": 35,
+    "flags": [
+      "PAN ABCDE1234F not found in Income Tax records.",
+      "GSTIN 07ABCDE1234F1Z5 is invalid or mismatched.",
+      "Udyam MSME Certificate UDYAM-DL-00-0000000 not found."
+    ],
     "documentPath": "D:\\vs code file\\Internal_hackathon1\\backend\\data\\uploads\\BID-825710.txt",
-    "submittedOn": "09 Sept 2026"
+    "submittedOn": "09 Sept 2026",
+    "extractedData": {
+      "companyName": "ABC Network Systems Pvt. Ltd.",
+      "gstin": "07ABCDE1234F1Z5",
+      "pan": "ABCDE1234F",
+      "financialTurnover": "NOT_FOUND",
+      "udyamRegistration": "UDYAM-DL-00-0000000",
+      "tamperingSigns": false,
+      "summary": "The document is a synthetic bidder dossier for ABC Network Systems Pvt. Ltd. containing valid identity, GSTIN, PAN, and Udyam registration records. However, it reflects potential non-compliance due to a declared local content of 35% against the required 50% tender threshold."
+    },
+    "govVerification": {
+      "pan": {
+        "match": false,
+        "details": null
+      },
+      "gstin": {
+        "match": false,
+        "details": null
+      },
+      "udyam": {
+        "match": false,
+        "details": null
+      }
+    },
+    "aiSummary": "AI Analysis complete for ABC Network Systems Pvt. Ltd.. Warning: Major discrepancies found. PAN ABCDE1234F not found in Income Tax records.",
+    "reviewedOn": "2026-09-08T23:17:43.036Z",
+    "comments": ""
   },
   {
     "id": "BID-123456",
