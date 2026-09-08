@@ -1,17 +1,15 @@
 import React from 'react';
-import { useRouter } from './lib/router';
+import { Routes, Route } from 'react-router-dom';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
 
 export default function App() {
-  const { page, navigate } = useRouter();
-
   return (
-    <>
-      {page === 'landing' && <LandingPage navigate={navigate} />}
-      {page === 'login' && <LoginPage navigate={navigate} />}
-      {page === 'dashboard' && <DashboardPage navigate={navigate} />}
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
+    </Routes>
   );
 }

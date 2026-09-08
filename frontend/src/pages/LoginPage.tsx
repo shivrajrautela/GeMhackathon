@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
-import type { Page } from '../lib/router';
-
-interface LoginPageProps {
-  navigate: (page: Page) => void;
-}
 
 type AuthMode = 'magic' | 'password';
 
-export function LoginPage({ navigate }: LoginPageProps) {
-  const [mode, setMode] = useState<AuthMode>('magic');
+export function LoginPage() {
+  const navigate = useNavigate();
+  const [mode, setMode] = useState<AuthMode>('password');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,7 +20,7 @@ export function LoginPage({ navigate }: LoginPageProps) {
     setLoading(true); setError(''); setSuccess('');
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: window.location.origin + '/#dashboard' }
+      options: { emailRedirectTo: window.location.origin + '/dashboard' }
     });
     setLoading(false);
     if (error) setError(error.message);
@@ -44,7 +41,7 @@ export function LoginPage({ navigate }: LoginPageProps) {
     if (result.error) {
       setError(result.error.message);
     } else if (result.data.session) {
-      navigate('dashboard');
+      navigate('/dashboard'); // ✅ React Router navigation
     } else {
       setSuccess('Check your email to confirm your account.');
     }
@@ -54,7 +51,7 @@ export function LoginPage({ navigate }: LoginPageProps) {
     if (!isSupabaseConfigured) { setError('Supabase keys missing in .env'); return; }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + '/#dashboard' }
+      options: { redirectTo: window.location.origin + '/dashboard' }
     });
     if (error) setError(error.message);
   };
@@ -65,12 +62,12 @@ export function LoginPage({ navigate }: LoginPageProps) {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <button onClick={() => navigate('landing')} className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-9 h-9 bg-purple-500 rounded-xl flex items-center justify-center font-bold text-white">H</div>
-            <span className="font-bold text-lg text-white tracking-tight">HackMVP</span>
+          <button onClick={() => navigate('/')} className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-9 h-9 bg-purple-500 rounded-xl flex items-center justify-center font-bold text-white">G</div>
+            <span className="font-bold text-lg text-white tracking-tight">GeM Verify</span>
           </button>
           <p className="mt-3 text-slate-400 text-sm">
-            {isSignUp ? 'Create your account' : 'Sign in to your account'}
+            {isSignUp ? 'Create your officer account' : 'Sign in to your account'}
           </p>
         </div>
 
@@ -194,7 +191,7 @@ export function LoginPage({ navigate }: LoginPageProps) {
         </div>
 
         <p className="text-center text-slate-600 text-xs mt-6">
-          By continuing, you agree to the hackathon demo terms.
+          Government Tender Bidder Verification Portal
         </p>
       </div>
     </div>

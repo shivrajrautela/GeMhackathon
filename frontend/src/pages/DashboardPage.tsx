@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
-import type { Page } from '../lib/router';
 import type { User } from '@supabase/supabase-js';
 
-interface DashboardPageProps {
-  navigate: (page: Page) => void;
-}
-
-export function DashboardPage({ navigate }: DashboardPageProps) {
+export function DashboardPage() {
+  const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 

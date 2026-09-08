@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, FileText, CheckCircle, AlertTriangle, Clock, Zap, Target, Search, BarChart3, Database } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -21,9 +22,9 @@ export function Navbar() {
           <a href="/self-check" className="hidden md:inline-flex text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             Bidder Self-Check
           </a>
-          <a href="/login" className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90">
+          <Link to="/login" className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90">
             Officer Login
-          </a>
+          </Link>
         </div>
       </div>
     </header>
@@ -48,9 +49,9 @@ export function Hero() {
               GeM Verify uses AI-powered document verification, automated compliance checks and risk assessment to help procurement officers verify bidders faster and with greater transparency.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a href="/login" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg transition-colors hover:bg-primary/90">
+              <Link to="/login" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg transition-colors hover:bg-primary/90">
                 Officer Login
-              </a>
+              </Link>
               <a href="/self-check" className="inline-flex h-12 items-center justify-center rounded-md border border-slate-200 bg-white px-8 text-base font-medium shadow-sm transition-colors hover:bg-slate-100">
                 Bidder Self-Check
               </a>
