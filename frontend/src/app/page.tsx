@@ -32,13 +32,13 @@ export default function LandingPage() {
 
           {/* Right Navigation */}
           <div className="flex items-center space-x-8">
-            <Link href="#features" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
+            <a href="#features" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
               Features
-            </Link>
+            </a>
             
-            <Link href="#about" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
+            <a href="#about" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
               About
-            </Link>
+            </a>
 
             <Link href="/officer/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide flex items-center">
               <Activity className="h-4 w-4 mr-1.5 text-blue-500 animate-pulse" />
