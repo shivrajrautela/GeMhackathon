@@ -239,7 +239,7 @@ export default function LandingPage() {
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 uppercase">About Us</h2>
             <div className="w-16 h-1 bg-blue-600 rounded"></div>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
-              We are a team of passionate developers building solutions for the <strong className="text-slate-800">Smart India Hackathon 2026</strong>. GeM Verify addresses the critical need for automated, AI-driven bid verification in the Government e-Marketplace.
+              We are a team of passionate developers building solutions for the <strong className="text-slate-800">Internal Hackathon</strong>. GeM Verify addresses the critical need for automated, AI-driven bid verification in the Government e-Marketplace.
             </p>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
               Manual verification of contractor documents is slow and susceptible to document forgery. Our platform leverages advanced Artificial Intelligence (Gemini 3.6 Flash) and cryptographic hashing to instantly parse, cross-verify, and secure tender submissions.
@@ -264,7 +264,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-800">Meet The Team</h3>
-                  <p className="text-sm font-medium text-slate-500 mt-1">Smart India Hackathon 2026</p>
+                  <p className="text-sm font-medium text-slate-500 mt-1">Internal Hackathon</p>
                 </div>
               </div>
               
@@ -297,7 +297,7 @@ export default function LandingPage() {
             <img src="/logo.svg" alt="Gem-Verify Logo" className="h-8 w-auto object-contain drop-shadow-md" />
             <span className="text-xl font-bold tracking-tight text-white">GeM Verify</span>
           </div>
-          <p className="font-medium text-slate-400">© 2026 Smart India Hackathon Prototype. Developed for the Government of India e-Marketplace.</p>
+          <p className="font-medium text-slate-400">© 2026 Internal Hackathon Prototype. Developed for the Government of India e-Marketplace.</p>
         </div>
       </footer>
     </div>
