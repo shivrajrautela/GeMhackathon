@@ -40,7 +40,7 @@ export default function LandingPage() {
               About
             </a>
 
-            <Link href="/officer/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide flex items-center">
+            <Link href="/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide flex items-center">
               <Activity className="h-4 w-4 mr-1.5 text-blue-500 animate-pulse" />
               Live Tenders
             </Link>
