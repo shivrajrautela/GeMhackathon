@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Landmark } from 'lucide-react';
+import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Landmark, Sparkles, CheckCircle, XCircle } from 'lucide-react';
 import { 
   DropdownMenu,
   DropdownMenuContent,
