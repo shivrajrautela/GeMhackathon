@@ -85,11 +85,12 @@ export default function LandingPage() {
       {/* Hero Section - Light Gov Theme */}
       <section className="relative overflow-hidden bg-slate-50 text-slate-900 pt-24 pb-32 px-6 border-b border-slate-200">
         {/* Background Enlightenment Radiance */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
           {/* Central Celestial Enlightenment Glow */}
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[750px] h-[500px] bg-gradient-to-b from-amber-200/40 via-blue-200/30 to-transparent blur-[120px] rounded-full"></div>
-          {/* Soft Amber & Cyan Aura behind Mockup */}
-          <div className="absolute top-16 right-0 w-[550px] h-[500px] bg-gradient-to-br from-amber-300/25 via-sky-400/20 to-blue-500/15 blur-[100px] rounded-full"></div>
+          {/* Enhanced Amber & Cyan Aura extending further to the Right */}
+          <div className="absolute top-10 -right-24 w-[750px] h-[600px] bg-gradient-to-br from-amber-300/35 via-sky-400/30 to-blue-500/20 blur-[120px] rounded-full"></div>
+          <div className="absolute top-32 right-12 w-[450px] h-[400px] bg-amber-200/30 blur-[90px] rounded-full"></div>
           {/* Subtle Left Fill Radiance */}
           <div className="absolute top-32 left-10 w-[400px] h-[400px] bg-blue-300/20 blur-[90px] rounded-full"></div>
         </div>
@@ -117,11 +118,11 @@ export default function LandingPage() {
           </div>
           
           {/* Right Visual Element */}
-          <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300">
+          <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300 lg:translate-x-8">
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300 -rotate-1 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
               <div className="animate-float w-full h-full relative">
                 {/* Luminous Enlightenment Glow Directly Behind Mockup */}
-                <div className="absolute -inset-6 bg-gradient-to-r from-amber-300/35 via-sky-300/30 to-indigo-300/25 rounded-3xl blur-2xl -z-10"></div>
+                <div className="absolute -inset-8 -right-12 bg-gradient-to-r from-amber-300/40 via-sky-300/35 to-indigo-300/30 rounded-3xl blur-3xl -z-10"></div>
                 <div className="bg-white rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden relative z-10 lg:h-[500px] flex flex-col ring-1 ring-slate-900/5 hover:shadow-2xl transition-shadow duration-500">
                   {/* Browser/Window Header */}
                   <div className="h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 space-x-2">
