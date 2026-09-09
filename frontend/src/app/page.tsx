@@ -21,9 +21,9 @@ export default function LandingPage() {
           
           {/* Logo - Clickable to Home */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-12 w-auto object-contain drop-shadow-sm" />
+            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-12 w-auto object-contain drop-shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300" />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-700 transition-colors">
+              <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-700 transition-colors duration-300">
                 GeM <span className="text-blue-600">Verify</span>
               </span>
               <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Govt. Procurement Portal</span>
@@ -32,31 +32,31 @@ export default function LandingPage() {
 
           {/* Right Navigation */}
           <div className="flex items-center space-x-8">
-            <Link href="#features" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide items-center">
+            <Link href="#features" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
               Features
             </Link>
             
-            <Link href="#about" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide items-center">
+            <Link href="#about" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide items-center">
               About
             </Link>
 
-            <Link href="/officer/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center">
+            <Link href="/officer/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide flex items-center">
               <Activity className="h-4 w-4 mr-1.5 text-blue-500 animate-pulse" />
               Live Tenders
             </Link>
 
             {/* Register Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center focus:outline-none cursor-pointer">
+              <DropdownMenuTrigger className="text-base font-bold text-slate-700 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wide flex items-center focus:outline-none cursor-pointer">
                 Register <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 bg-white border-slate-200 shadow-lg rounded-md z-50">
-                <DropdownMenuItem onClick={() => router.push('/auth/register')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full">
-                  <User className="mr-3 h-5 w-5 text-orange-500" />
+                <DropdownMenuItem onClick={() => router.push('/auth/register')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full group">
+                  <User className="mr-3 h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
                   <span className="font-medium text-slate-700">Register as Contractor (Bidder)</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push('/auth/register')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full">
-                  <Landmark className="mr-3 h-5 w-5 text-blue-600" />
+                <DropdownMenuItem onClick={() => router.push('/auth/register')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full group">
+                  <Landmark className="mr-3 h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
                   <span className="font-medium text-slate-700">Register as Procurement Officer</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -64,7 +64,7 @@ export default function LandingPage() {
 
             {/* Login Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="bg-blue-700 hover:bg-blue-800 text-white font-bold text-base px-7 py-2.5 rounded transition-colors flex items-center shadow-md focus:outline-none cursor-pointer">
+              <DropdownMenuTrigger className="bg-blue-700 hover:bg-blue-800 hover:-translate-y-0.5 hover:shadow-lg text-white font-bold text-base px-7 py-2.5 rounded transition-all duration-300 flex items-center shadow-md focus:outline-none cursor-pointer">
                 Login <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 bg-white border-slate-200 shadow-lg rounded-md z-50">
