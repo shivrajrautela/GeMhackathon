@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Landmark, Sparkles, CheckCircle, XCircle } from 'lucide-react';
+import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Users, Landmark, Sparkles, CheckCircle, XCircle } from 'lucide-react';
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -236,13 +236,13 @@ export default function LandingPage() {
       <section id="about" className="py-24 px-6 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 uppercase">About The Project</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 uppercase">About Us</h2>
             <div className="w-16 h-1 bg-blue-600 rounded"></div>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
-              Developed as a prototype for the <strong className="text-slate-800">Smart India Hackathon 2026</strong>, GeM Verify addresses the critical need for automated bid verification in the Government e-Marketplace.
+              We are a team of passionate developers building solutions for the <strong className="text-slate-800">Smart India Hackathon 2026</strong>. GeM Verify addresses the critical need for automated, AI-driven bid verification in the Government e-Marketplace.
             </p>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
-              Manual verification of contractor documents is slow, prone to human error, and susceptible to document forgery. Our platform leverages advanced Artificial Intelligence (Gemini 3.6 Flash) and cryptographic hashing to instantly parse, cross-verify, and secure tender submissions.
+              Manual verification of contractor documents is slow and susceptible to document forgery. Our platform leverages advanced Artificial Intelligence (Gemini 3.6 Flash) and cryptographic hashing to instantly parse, cross-verify, and secure tender submissions.
             </p>
             <div className="pt-4 flex gap-4">
               <div className="bg-white p-4 rounded border border-slate-200 shadow-sm flex-1 text-center">
@@ -255,16 +255,36 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="relative h-[400px] rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white flex items-center justify-center p-8">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-8">
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
-            <div className="relative z-10 text-center space-y-6">
-              <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-blue-50 border border-blue-100 mb-4">
-                <Landmark className="h-10 w-10 text-blue-600" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-8 border-b border-slate-100 pb-5">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 border border-blue-100">
+                  <Users className="h-7 w-7 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-800">Meet The Team</h3>
+                  <p className="text-sm font-medium text-slate-500 mt-1">Smart India Hackathon 2026</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-slate-800">Building Digital Trust</h3>
-              <p className="text-slate-500 font-medium max-w-sm mx-auto">
-                Empowering government officers to make faster, evidence-based procurement decisions while ensuring a level playing field for all MSMEs.
-              </p>
+              
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Shivraj Singh Rautela",
+                  "Vaibhav Makholiya",
+                  "Tarun Saini",
+                  "Kunal Goswami",
+                  "Gunjan",
+                  "Kritika"
+                ].map((name, i) => (
+                  <li key={i} className="flex items-center gap-3 bg-slate-50 border border-slate-100 p-3 rounded-lg shadow-sm hover:border-blue-300 transition-colors group cursor-default">
+                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm shadow-inner shrink-0 group-hover:scale-110 transition-transform">
+                      {name.charAt(0)}
+                    </div>
+                    <span className="font-semibold text-slate-700 text-sm leading-tight">{name}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
