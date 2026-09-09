@@ -86,36 +86,23 @@ export default function LandingPage() {
       <section className="bg-slate-50 text-slate-900 pt-24 pb-32 px-6 border-b border-slate-200">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-in slide-in-from-left duration-700">
-            <div className="inline-flex items-center px-4 py-1.5 bg-orange-100 border border-orange-200 text-orange-800 text-xs font-bold uppercase tracking-widest rounded-sm">
-              <Zap className="mr-2 h-3 w-3" />
-              Smart India Hackathon 2026
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight text-slate-900">
-              Procurement Security, <span className="text-blue-700">Automated.</span>
+            <h1 className="text-5xl lg:text-[4rem] font-extrabold tracking-tight leading-[1.1] text-slate-900">
+              Smarter Bid Verification.<br/>Faster Government Procurement.
             </h1>
             <p className="text-lg text-slate-600 max-w-xl leading-relaxed font-medium">
-              GeM Verify is an AI-powered integrated bid compliance verification platform. Reduce manual tender review times from days to seconds with advanced document tampering detection and automated statutory checks.
+              GeM Verify uses AI-powered document verification, automated compliance checks and risk assessment to help procurement officers verify bidders faster and with greater transparency.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-6 text-lg rounded-sm transition-colors flex items-center justify-center shadow-md cursor-pointer focus:outline-none">
-                  Access Portal <Lock className="ml-2 h-5 w-5" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-64 bg-white border-slate-200 shadow-lg rounded-md mt-2 z-50">
-                  <DropdownMenuItem onClick={() => router.push('/auth/login')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full">
-                    <User className="mr-3 h-5 w-5 text-orange-500" />
-                    <span className="font-medium text-slate-700">Contractor / MSME</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => router.push('/auth/login')} className="cursor-pointer hover:bg-slate-50 py-3 flex items-center w-full">
-                    <Landmark className="mr-3 h-5 w-5 text-blue-600" />
-                    <span className="font-medium text-slate-700">Procurement Officer</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <Link href="#features" className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-bold px-8 py-4 text-center transition-colors text-lg rounded-sm shadow-sm flex items-center justify-center">
-                Explore Features
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Link href="/auth/login" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 text-center transition-colors text-base rounded shadow-md flex items-center justify-center">
+                Officer Login
               </Link>
+              <Link href="/auth/login" className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-bold px-8 py-4 text-center transition-colors text-base rounded shadow-sm flex items-center justify-center">
+                Bidder Self-Check
+              </Link>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-slate-500 font-medium pt-2">
+              <ShieldCheck className="h-4 w-4 text-green-500" />
+              <span>Secure · Transparent · Evidence-Based</span>
             </div>
           </div>
           
