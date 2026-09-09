@@ -37,13 +37,13 @@ export default function TopNav() {
   const links = isOfficer ? officerLinks : bidderLinks;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950 shadow-md animate-in slide-in-from-top duration-500">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm animate-in slide-in-from-top duration-500">
       <div className="flex h-16 items-center px-8 justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-10">
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-12 w-auto object-contain bg-transparent p-1" />
-            <span className="ml-3 text-2xl font-black tracking-tighter text-white">
-              GeM <span className="text-cyan-400">Verify</span>
+            <img src="/logo.svg" alt="Gem-Verify Logo" className="h-10 w-auto object-contain bg-transparent p-0.5" />
+            <span className="ml-3 text-2xl font-black tracking-tighter text-slate-900">
+              GeM <span className="text-blue-600">Verify</span>
             </span>
           </Link>
 
@@ -55,13 +55,13 @@ export default function TopNav() {
                   key={link.name}
                   href={link.href}
                   className={cn(
-                    "flex items-center px-4 py-2 rounded-none text-sm font-medium transition-all duration-300",
+                    "flex items-center px-4 py-2 rounded-md text-sm font-semibold transition-all duration-300",
                     isActive
-                      ? "bg-slate-800 text-cyan-400 border-b-2 border-cyan-400"
-                      : "text-slate-400 hover:text-white hover:bg-slate-900"
+                      ? "bg-blue-50 text-blue-700 border-b-2 border-blue-600 rounded-b-none"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                   )}
                 >
-                  <link.icon className={cn("mr-2 h-4 w-4", isActive ? "text-cyan-400" : "text-slate-500")} />
+                  <link.icon className={cn("mr-2 h-4 w-4", isActive ? "text-blue-600" : "text-slate-400")} />
                   {link.name}
                 </Link>
               );
@@ -71,30 +71,30 @@ export default function TopNav() {
         
         <div className="flex items-center space-x-4">
           <DropdownMenu>
-            <DropdownMenuTrigger className={cn(buttonVariants({ variant: "outline" }), "flex items-center space-x-2 bg-slate-900 border-slate-700 hover:bg-slate-800 hover:border-slate-600 rounded-none transition-colors text-slate-200 hover:text-white")}>
+            <DropdownMenuTrigger className={cn(buttonVariants({ variant: "outline" }), "flex items-center space-x-2 bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300 rounded-md transition-colors text-slate-700 hover:text-slate-900 shadow-sm")}>
               {isOfficer ? (
-                <ShieldCheck className="h-4 w-4 text-cyan-400" />
+                <ShieldCheck className="h-4 w-4 text-blue-600" />
               ) : (
-                <User className="h-4 w-4 text-amber-400" />
+                <User className="h-4 w-4 text-orange-500" />
               )}
               <span className="font-semibold">{isOfficer ? 'Procurement Officer' : 'MSME Bidder'}</span>
-              <ChevronDown className="h-4 w-4 text-slate-500" />
+              <ChevronDown className="h-4 w-4 text-slate-400" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 rounded-none shadow-xl border-slate-700 bg-slate-900 animate-in fade-in zoom-in-95 duration-200">
+            <DropdownMenuContent align="end" className="w-56 rounded-md shadow-xl border-slate-200 bg-white animate-in fade-in zoom-in-95 duration-200">
               <DropdownMenuGroup>
-                <DropdownMenuLabel className="text-slate-500 text-xs uppercase tracking-wider font-semibold">Switch Context</DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-slate-800" />
-                <DropdownMenuItem onClick={() => router.push('/officer/dashboard')} className="cursor-pointer rounded-none focus:bg-slate-800 text-slate-200 focus:text-cyan-400">
-                  <ShieldCheck className="mr-2 h-4 w-4 text-cyan-400" />
+                <DropdownMenuLabel className="text-slate-400 text-xs uppercase tracking-wider font-bold">Switch Context</DropdownMenuLabel>
+                <DropdownMenuSeparator className="bg-slate-100" />
+                <DropdownMenuItem onClick={() => router.push('/officer/dashboard')} className="cursor-pointer rounded-sm focus:bg-slate-50 text-slate-700 focus:text-blue-700">
+                  <ShieldCheck className="mr-2 h-4 w-4 text-blue-600" />
                   <span className="font-medium">Procurement Officer</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push('/bidder/dashboard')} className="cursor-pointer rounded-none focus:bg-slate-800 text-slate-200 focus:text-amber-400">
-                  <User className="mr-2 h-4 w-4 text-amber-400" />
+                <DropdownMenuItem onClick={() => router.push('/bidder/dashboard')} className="cursor-pointer rounded-sm focus:bg-slate-50 text-slate-700 focus:text-orange-600">
+                  <User className="mr-2 h-4 w-4 text-orange-500" />
                   <span className="font-medium">Bidder / MSME</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
-              <DropdownMenuSeparator className="bg-slate-800" />
-              <DropdownMenuItem onClick={() => router.push('/auth/login')} className="text-rose-400 focus:bg-rose-950 focus:text-rose-300 cursor-pointer rounded-none">
+              <DropdownMenuSeparator className="bg-slate-100" />
+              <DropdownMenuItem onClick={() => router.push('/auth/login')} className="text-red-600 focus:bg-red-50 focus:text-red-700 cursor-pointer rounded-sm">
                 <span className="font-medium">Sign Out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>

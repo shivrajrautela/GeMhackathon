@@ -31,15 +31,23 @@ export default function LandingPage() {
           </Link>
 
           {/* Right Navigation */}
-          <div className="flex items-center space-x-6">
-            <Link href="/officer/tenders" className="text-sm font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center">
-              <FileText className="h-4 w-4 mr-1" />
-              Tenders
+          <div className="flex items-center space-x-8">
+            <Link href="#features" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide items-center">
+              Features
+            </Link>
+            
+            <Link href="#about" className="hidden md:flex text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide items-center">
+              About
+            </Link>
+
+            <Link href="/officer/tenders" className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center">
+              <Activity className="h-4 w-4 mr-1.5 text-blue-500 animate-pulse" />
+              Live Tenders
             </Link>
 
             {/* Register Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-sm font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center focus:outline-none cursor-pointer">
+              <DropdownMenuTrigger className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors uppercase tracking-wide flex items-center focus:outline-none cursor-pointer">
                 Register <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 bg-white border-slate-200 shadow-lg rounded-md z-50">
@@ -56,7 +64,7 @@ export default function LandingPage() {
 
             {/* Login Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2 rounded-sm transition-colors flex items-center shadow-md focus:outline-none cursor-pointer">
+              <DropdownMenuTrigger className="bg-blue-700 hover:bg-blue-800 text-white font-bold text-base px-7 py-2.5 rounded transition-colors flex items-center shadow-md focus:outline-none cursor-pointer">
                 Login <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 bg-white border-slate-200 shadow-lg rounded-md z-50">
@@ -114,67 +122,78 @@ export default function LandingPage() {
           {/* Right Visual Element */}
           <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300">
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300">
-              <div className="bg-slate-900 rounded-xl shadow-2xl border border-slate-700 overflow-hidden relative z-10 lg:h-[500px] flex flex-col">
-                <div className="h-10 border-b border-slate-800 bg-slate-950 flex items-center px-4 space-x-2">
-                  <div className="h-3 w-3 bg-red-500 rounded-full" />
-                  <div className="h-3 w-3 bg-amber-500 rounded-full" />
-                  <div className="h-3 w-3 bg-green-500 rounded-full" />
-                  <div className="ml-4 flex-1 text-center font-mono text-xs text-slate-500">POST /api/officer/bids/verify</div>
+              <div className="bg-white rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden relative z-10 lg:h-[500px] flex flex-col ring-1 ring-slate-900/5">
+                {/* Browser/Window Header */}
+                <div className="h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 space-x-2">
+                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                  <div className="ml-4 flex-1 text-center font-sans text-xs text-slate-400 font-semibold uppercase tracking-widest">Verification Pipeline</div>
                 </div>
-                <div className="p-6 flex-1 flex flex-col gap-4 overflow-hidden">
+
+                <div className="p-6 flex-1 flex flex-col gap-5 overflow-hidden bg-slate-50/50">
                   
-                  {/* AI Extract Mock */}
-                  <div className="bg-slate-800 border border-slate-700 rounded-lg p-4">
-                     <div className="flex items-center justify-between mb-3">
-                       <span className="text-cyan-400 font-mono text-sm flex items-center gap-2"><Sparkles className="w-4 h-4" /> Gemini 3.6 Flash</span>
-                       <span className="text-xs text-slate-400 font-medium">PDF Parsed</span>
+                  {/* AI Extract Mock - Light Mode */}
+                  <div className="bg-white border border-blue-100 shadow-sm rounded-lg p-5 relative overflow-hidden">
+                     <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                     <div className="flex items-center justify-between mb-4">
+                       <span className="text-blue-700 font-bold text-sm flex items-center gap-2"><Sparkles className="w-4 h-4" /> Gemini Analysis</span>
+                       <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider bg-blue-50 px-2 py-1 rounded border border-blue-100">Document Parsed</span>
                      </div>
-                     <div className="font-mono text-xs text-green-400 bg-slate-950 p-3 rounded overflow-hidden">
-                       {`{
-  "companyName": "Sharma Industrial",
-  "gstin": "07AAAAA0000A1Z5",
-  "tamperingSigns": false
-}`}
+                     <div className="font-mono text-xs text-slate-700 bg-slate-50 border border-slate-200 p-3 rounded-md overflow-hidden shadow-inner leading-relaxed">
+                       <span className="text-purple-600 font-semibold">const</span> extractedData = {`{`}
+                       <br/>  <span className="text-blue-600">"company"</span>: <span className="text-green-600">"Sharma Industrial"</span>,
+                       <br/>  <span className="text-blue-600">"gstin"</span>: <span className="text-green-600">"07AAAAA0000A1Z5"</span>,
+                       <br/>  <span className="text-blue-600">"tampering"</span>: <span className="text-orange-500 font-bold">false</span>
+                       <br/>{`}`}
                      </div>
                   </div>
 
-                  {/* Gov API Checks */}
+                  {/* Gov API Checks - Light Mode */}
                   <div className="space-y-3">
-                     <div className="flex items-center justify-between bg-slate-800/50 border border-slate-700 p-3 rounded-lg">
+                     <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg">
                        <div className="flex items-center gap-3">
-                         <CheckCircle className="w-5 h-5 text-green-500" />
-                         <span className="text-slate-200 text-sm font-medium">Income Tax (PAN)</span>
+                         <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
+                         <span className="text-slate-700 text-sm font-bold">Income Tax (PAN)</span>
                        </div>
-                       <span className="text-xs text-slate-500 font-mono">200 OK</span>
+                       <div className="flex items-center gap-2">
+                         <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                         <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
+                       </div>
                      </div>
-                     <div className="flex items-center justify-between bg-slate-800/50 border border-slate-700 p-3 rounded-lg">
+
+                     <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg">
                        <div className="flex items-center gap-3">
-                         <CheckCircle className="w-5 h-5 text-green-500" />
-                         <span className="text-slate-200 text-sm font-medium">MCA Registry</span>
+                         <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
+                         <span className="text-slate-700 text-sm font-bold">MCA Registry</span>
                        </div>
-                       <span className="text-xs text-slate-500 font-mono">200 OK</span>
+                       <div className="flex items-center gap-2">
+                         <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                         <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
+                       </div>
                      </div>
-                     <div className="flex items-center justify-between bg-red-900/20 border border-red-900/50 p-3 rounded-lg">
+
+                     <div className="flex items-center justify-between bg-red-50/80 border border-red-200 shadow-sm p-3.5 rounded-lg">
                        <div className="flex items-center gap-3">
-                         <XCircle className="w-5 h-5 text-red-500" />
-                         <span className="text-red-200 text-sm font-medium">GeM Blacklist Check</span>
+                         <div className="bg-red-100 p-1.5 rounded-full"><XCircle className="w-4 h-4 text-red-600" /></div>
+                         <span className="text-red-700 text-sm font-bold">GeM Blacklist Check</span>
                        </div>
-                       <span className="text-xs text-red-400 font-mono">FLAGGED</span>
+                       <span className="text-[10px] text-red-600 font-bold bg-white px-2 py-1 rounded shadow-sm border border-red-200 tracking-wider">FLAGGED</span>
                      </div>
                   </div>
 
                 </div>
               </div>
               
-              {/* Floating element */}
-              <div className="absolute -bottom-6 -left-6 bg-slate-900 border border-cyan-800 p-5 shadow-2xl rounded-lg animate-bounce z-20">
+              {/* Floating Cryptographic Audit - Light Mode */}
+              <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] rounded-xl animate-bounce z-20">
                 <div className="flex items-center space-x-4">
-                  <div className="h-10 w-10 bg-cyan-950 rounded flex items-center justify-center border border-cyan-800">
-                    <Lock className="h-5 w-5 text-cyan-400" />
+                  <div className="h-12 w-12 bg-indigo-50 rounded-lg flex items-center justify-center border border-indigo-100">
+                    <Lock className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <div className="text-cyan-50 font-bold text-sm">Cryptographic Audit</div>
-                    <div className="text-cyan-400/70 text-xs font-mono mt-1">SHA-256: 0x8F9B...4A21</div>
+                    <div className="text-slate-900 font-bold text-sm">Blockchain Audit Log</div>
+                    <div className="text-slate-500 text-xs font-mono mt-1.5 bg-slate-50 px-2 py-1 rounded border border-slate-200">0x8F9B...4A21</div>
                   </div>
                 </div>
               </div>
