@@ -82,16 +82,7 @@ export default function TopNav() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 rounded-md shadow-xl border-slate-200 bg-white animate-in fade-in zoom-in-95 duration-200">
               <DropdownMenuGroup>
-                <DropdownMenuLabel className="text-slate-400 text-xs uppercase tracking-wider font-bold">Switch Context</DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-slate-100" />
-                <DropdownMenuItem onClick={() => router.push('/officer/dashboard')} className="cursor-pointer rounded-sm focus:bg-slate-50 text-slate-700 focus:text-blue-700">
-                  <ShieldCheck className="mr-2 h-4 w-4 text-blue-600" />
-                  <span className="font-medium">Procurement Officer</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push('/bidder/dashboard')} className="cursor-pointer rounded-sm focus:bg-slate-50 text-slate-700 focus:text-orange-600">
-                  <User className="mr-2 h-4 w-4 text-orange-500" />
-                  <span className="font-medium">Bidder / MSME</span>
-                </DropdownMenuItem>
+                <DropdownMenuLabel className="text-slate-400 text-xs uppercase tracking-wider font-bold">My Account</DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator className="bg-slate-100" />
               <DropdownMenuItem onClick={() => router.push('/auth/login')} className="text-red-600 focus:bg-red-50 focus:text-red-700 cursor-pointer rounded-sm">
