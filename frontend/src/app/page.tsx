@@ -16,7 +16,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-500/30">
       {/* Navigation - Gov Style */}
-      <nav className="border-b border-slate-200 bg-white shadow-sm">
+      <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           
           {/* Logo - Clickable to Home */}
@@ -228,6 +228,44 @@ export default function LandingPage() {
             <p className="text-slate-600 leading-relaxed font-medium">
               Machine learning models calculate a comprehensive compliance score, assigning Low, Medium, or High risk tags to every bid.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 uppercase">About The Project</h2>
+            <div className="w-16 h-1 bg-blue-600 rounded"></div>
+            <p className="text-slate-600 text-lg leading-relaxed font-medium">
+              Developed as a prototype for the <strong className="text-slate-800">Smart India Hackathon 2026</strong>, GeM Verify addresses the critical need for automated bid verification in the Government e-Marketplace.
+            </p>
+            <p className="text-slate-600 text-lg leading-relaxed font-medium">
+              Manual verification of contractor documents is slow, prone to human error, and susceptible to document forgery. Our platform leverages advanced Artificial Intelligence (Gemini 3.6 Flash) and cryptographic hashing to instantly parse, cross-verify, and secure tender submissions.
+            </p>
+            <div className="pt-4 flex gap-4">
+              <div className="bg-white p-4 rounded border border-slate-200 shadow-sm flex-1 text-center">
+                <div className="text-3xl font-black text-blue-600 mb-1">98%</div>
+                <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Faster Verification</div>
+              </div>
+              <div className="bg-white p-4 rounded border border-slate-200 shadow-sm flex-1 text-center">
+                <div className="text-3xl font-black text-green-600 mb-1">100%</div>
+                <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Audit Trail</div>
+              </div>
+            </div>
+          </div>
+          <div className="relative h-[400px] rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white flex items-center justify-center p-8">
+            <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
+            <div className="relative z-10 text-center space-y-6">
+              <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-blue-50 border border-blue-100 mb-4">
+                <Landmark className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800">Building Digital Trust</h3>
+              <p className="text-slate-500 font-medium max-w-sm mx-auto">
+                Empowering government officers to make faster, evidence-based procurement decisions while ensuring a level playing field for all MSMEs.
+              </p>
+            </div>
           </div>
         </div>
       </section>
