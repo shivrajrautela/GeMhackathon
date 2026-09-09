@@ -109,78 +109,80 @@ export default function LandingPage() {
           {/* Right Visual Element */}
           <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300">
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300">
-              <div className="bg-white rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden relative z-10 lg:h-[500px] flex flex-col ring-1 ring-slate-900/5">
-                {/* Browser/Window Header */}
-                <div className="h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 space-x-2">
-                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
-                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
-                  <div className="h-3 w-3 bg-slate-300 rounded-full" />
-                  <div className="ml-4 flex-1 text-center font-sans text-xs text-slate-400 font-semibold uppercase tracking-widest">Verification Pipeline</div>
+              <div className="animate-float w-full h-full relative">
+                <div className="bg-white rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden relative z-10 lg:h-[500px] flex flex-col ring-1 ring-slate-900/5 hover:shadow-2xl transition-shadow duration-500">
+                  {/* Browser/Window Header */}
+                  <div className="h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 space-x-2">
+                    <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                    <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                    <div className="h-3 w-3 bg-slate-300 rounded-full" />
+                    <div className="ml-4 flex-1 text-center font-sans text-xs text-slate-400 font-semibold uppercase tracking-widest">Verification Pipeline</div>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col gap-5 overflow-hidden bg-slate-50/50">
+                    
+                    {/* AI Extract Mock - Light Mode */}
+                    <div className="bg-white border border-blue-100 shadow-sm rounded-lg p-5 relative overflow-hidden hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 cursor-default group">
+                       <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
+                       <div className="flex items-center justify-between mb-4">
+                         <span className="text-blue-700 font-bold text-sm flex items-center gap-2"><Sparkles className="w-4 h-4" /> Gemini Analysis</span>
+                         <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider bg-blue-50 px-2 py-1 rounded border border-blue-100">Document Parsed</span>
+                       </div>
+                       <div className="font-mono text-xs text-slate-700 bg-slate-50 border border-slate-200 p-3 rounded-md overflow-hidden shadow-inner leading-relaxed group-hover:border-blue-200 transition-colors">
+                         <span className="text-purple-600 font-semibold">const</span> extractedData = {`{`}
+                         <br/>  <span className="text-blue-600">"company"</span>: <span className="text-green-600">"Sharma Industrial"</span>,
+                         <br/>  <span className="text-blue-600">"gstin"</span>: <span className="text-green-600">"07AAAAA0000A1Z5"</span>,
+                         <br/>  <span className="text-blue-600">"tampering"</span>: <span className="text-orange-500 font-bold">false</span>
+                         <br/>{`}`}
+                       </div>
+                    </div>
+
+                    {/* Gov API Checks - Light Mode */}
+                    <div className="space-y-3">
+                       <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-green-300 transition-all duration-300 cursor-default">
+                         <div className="flex items-center gap-3">
+                           <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
+                           <span className="text-slate-700 text-sm font-bold">Income Tax (PAN)</span>
+                         </div>
+                         <div className="flex items-center gap-2">
+                           <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                           <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
+                         </div>
+                       </div>
+
+                       <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-green-300 transition-all duration-300 cursor-default">
+                         <div className="flex items-center gap-3">
+                           <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
+                           <span className="text-slate-700 text-sm font-bold">MCA Registry</span>
+                         </div>
+                         <div className="flex items-center gap-2">
+                           <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                           <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
+                         </div>
+                       </div>
+
+                       <div className="flex items-center justify-between bg-red-50/80 border border-red-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-red-300 transition-all duration-300 cursor-default">
+                         <div className="flex items-center gap-3">
+                           <div className="bg-red-100 p-1.5 rounded-full"><XCircle className="w-4 h-4 text-red-600" /></div>
+                           <span className="text-red-700 text-sm font-bold">GeM Blacklist Check</span>
+                         </div>
+                         <span className="text-[10px] text-red-600 font-bold bg-white px-2 py-1 rounded shadow-sm border border-red-200 tracking-wider">FLAGGED</span>
+                       </div>
+                    </div>
+
+                  </div>
                 </div>
-
-                <div className="p-6 flex-1 flex flex-col gap-5 overflow-hidden bg-slate-50/50">
-                  
-                  {/* AI Extract Mock - Light Mode */}
-                  <div className="bg-white border border-blue-100 shadow-sm rounded-lg p-5 relative overflow-hidden hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 cursor-default group">
-                     <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
-                     <div className="flex items-center justify-between mb-4">
-                       <span className="text-blue-700 font-bold text-sm flex items-center gap-2"><Sparkles className="w-4 h-4" /> Gemini Analysis</span>
-                       <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider bg-blue-50 px-2 py-1 rounded border border-blue-100">Document Parsed</span>
-                     </div>
-                     <div className="font-mono text-xs text-slate-700 bg-slate-50 border border-slate-200 p-3 rounded-md overflow-hidden shadow-inner leading-relaxed group-hover:border-blue-200 transition-colors">
-                       <span className="text-purple-600 font-semibold">const</span> extractedData = {`{`}
-                       <br/>  <span className="text-blue-600">"company"</span>: <span className="text-green-600">"Sharma Industrial"</span>,
-                       <br/>  <span className="text-blue-600">"gstin"</span>: <span className="text-green-600">"07AAAAA0000A1Z5"</span>,
-                       <br/>  <span className="text-blue-600">"tampering"</span>: <span className="text-orange-500 font-bold">false</span>
-                       <br/>{`}`}
-                     </div>
-                  </div>
-
-                  {/* Gov API Checks - Light Mode */}
-                  <div className="space-y-3">
-                     <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-green-300 transition-all duration-300 cursor-default">
-                       <div className="flex items-center gap-3">
-                         <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
-                         <span className="text-slate-700 text-sm font-bold">Income Tax (PAN)</span>
-                       </div>
-                       <div className="flex items-center gap-2">
-                         <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                         <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
-                       </div>
-                     </div>
-
-                     <div className="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-green-300 transition-all duration-300 cursor-default">
-                       <div className="flex items-center gap-3">
-                         <div className="bg-green-100 p-1.5 rounded-full"><CheckCircle className="w-4 h-4 text-green-600" /></div>
-                         <span className="text-slate-700 text-sm font-bold">MCA Registry</span>
-                       </div>
-                       <div className="flex items-center gap-2">
-                         <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                         <span className="text-xs text-slate-500 font-mono font-medium">Verified</span>
-                       </div>
-                     </div>
-
-                     <div className="flex items-center justify-between bg-red-50/80 border border-red-200 shadow-sm p-3.5 rounded-lg hover:-translate-y-1 hover:shadow-md hover:border-red-300 transition-all duration-300 cursor-default">
-                       <div className="flex items-center gap-3">
-                         <div className="bg-red-100 p-1.5 rounded-full"><XCircle className="w-4 h-4 text-red-600" /></div>
-                         <span className="text-red-700 text-sm font-bold">GeM Blacklist Check</span>
-                       </div>
-                       <span className="text-[10px] text-red-600 font-bold bg-white px-2 py-1 rounded shadow-sm border border-red-200 tracking-wider">FLAGGED</span>
-                     </div>
-                  </div>
-
-                </div>
-              </div>
-              
-              {/* Floating Cryptographic Audit - Light Mode */}
-              <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] rounded-xl hover:-translate-y-3 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.2)] transition-all duration-500 cursor-default z-20 group">
-                <div className="flex items-center space-x-4">
-                  <div className="h-12 w-12 bg-indigo-50 rounded-lg flex items-center justify-center border border-indigo-100 group-hover:scale-110 group-hover:bg-indigo-100 transition-all duration-300">
-                    <Lock className="h-6 w-6 text-indigo-600" />
-                  </div>
-                  <div>
-                    <div className="text-slate-900 font-bold text-sm">Audit Log</div>
-                    <div className="text-slate-500 text-xs font-mono mt-1.5 bg-slate-50 px-2 py-1 rounded border border-slate-200 group-hover:bg-indigo-50 group-hover:border-indigo-100 group-hover:text-indigo-700 transition-colors">0x8F9B...4A21</div>
+                
+                {/* Floating Cryptographic Audit - Light Mode */}
+                <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] rounded-xl hover:-translate-y-3 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.2)] transition-all duration-500 cursor-default z-20 group">
+                  <div className="flex items-center space-x-4">
+                    <div className="h-12 w-12 bg-indigo-50 rounded-lg flex items-center justify-center border border-indigo-100 group-hover:scale-110 group-hover:bg-indigo-100 transition-all duration-300">
+                      <Lock className="h-6 w-6 text-indigo-600" />
+                    </div>
+                    <div>
+                      <div className="text-slate-900 font-bold text-sm">Audit Log</div>
+                      <div className="text-slate-500 text-xs font-mono mt-1.5 bg-slate-50 px-2 py-1 rounded border border-slate-200 group-hover:bg-indigo-50 group-hover:border-indigo-100 group-hover:text-indigo-700 transition-colors">0x8F9B...4A21</div>
+                    </div>
                   </div>
                 </div>
               </div>
