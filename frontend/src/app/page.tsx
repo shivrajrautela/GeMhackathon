@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Landmark, Sparkles, CheckCircle, XCircle } from 'lucide-react';
+import { ShieldCheck, FileText, Zap, Lock, ChevronRight, Activity, Search, ChevronDown, User, Landmark } from 'lucide-react';
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -15,26 +15,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-500/30">
-      {/* Top Gov Banner */}
-      <div className="bg-slate-900 text-slate-300 text-[11px] font-medium py-1.5 px-6 flex justify-between items-center tracking-wider border-b border-slate-800">
-        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-slate-100 font-bold uppercase"><Landmark className="h-3.5 w-3.5 text-amber-500" /> Government of India</span>
-            <span className="hidden sm:inline opacity-50">|</span>
-            <span className="hidden sm:inline uppercase">Ministry of Commerce and Industry</span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 opacity-80">
-            <a href="#" className="hover:text-white transition-colors">Skip to Main Content</a>
-            <div className="flex items-center gap-2 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
-              <a href="#" className="hover:text-white transition-colors px-1 border-r border-slate-600">A-</a>
-              <a href="#" className="hover:text-white transition-colors px-1 border-r border-slate-600">A</a>
-              <a href="#" className="hover:text-white transition-colors px-1">A+</a>
-            </div>
-            <span className="px-2 py-0.5 bg-slate-800 rounded border border-slate-700 text-cyan-400 font-bold">English</span>
-          </div>
-        </div>
-      </div>
-
       {/* Navigation - Gov Style */}
       <nav className="border-b border-slate-200 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -98,6 +78,10 @@ export default function LandingPage() {
       <section className="bg-slate-50 text-slate-900 pt-24 pb-32 px-6 border-b border-slate-200">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-in slide-in-from-left duration-700">
+            <div className="inline-flex items-center px-4 py-1.5 bg-orange-100 border border-orange-200 text-orange-800 text-xs font-bold uppercase tracking-widest rounded-sm">
+              <Zap className="mr-2 h-3 w-3" />
+              Smart India Hackathon 2026
+            </div>
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight text-slate-900">
               Procurement Security, <span className="text-blue-700">Automated.</span>
             </h1>
@@ -129,68 +113,37 @@ export default function LandingPage() {
           
           {/* Right Visual Element */}
           <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300">
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300">
-              <div className="bg-slate-900 rounded-xl shadow-2xl border border-slate-700 overflow-hidden relative z-10 lg:h-[500px] flex flex-col">
-                <div className="h-10 border-b border-slate-800 bg-slate-950 flex items-center px-4 space-x-2">
-                  <div className="h-3 w-3 bg-red-500 rounded-full" />
-                  <div className="h-3 w-3 bg-amber-500 rounded-full" />
-                  <div className="h-3 w-3 bg-green-500 rounded-full" />
-                  <div className="ml-4 flex-1 text-center font-mono text-xs text-slate-500">POST /api/officer/bids/verify</div>
+            <div className="relative w-full max-w-lg aspect-square">
+              {/* Abstract decorative elements simulating a secure dashboard */}
+              <div className="absolute inset-0 bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col rounded-md">
+                <div className="h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 space-x-2">
+                  <div className="h-3 w-3 bg-red-400 rounded-full" />
+                  <div className="h-3 w-3 bg-amber-400 rounded-full" />
+                  <div className="h-3 w-3 bg-green-400 rounded-full" />
                 </div>
-                <div className="p-6 flex-1 flex flex-col gap-4 overflow-hidden">
-                  
-                  {/* AI Extract Mock */}
-                  <div className="bg-slate-800 border border-slate-700 rounded-lg p-4">
-                     <div className="flex items-center justify-between mb-3">
-                       <span className="text-cyan-400 font-mono text-sm flex items-center gap-2"><Sparkles className="w-4 h-4" /> Gemini 3.6 Flash</span>
-                       <span className="text-xs text-slate-400 font-medium">PDF Parsed</span>
-                     </div>
-                     <div className="font-mono text-xs text-green-400 bg-slate-950 p-3 rounded overflow-hidden">
-                       {`{
-  "companyName": "Sharma Industrial",
-  "gstin": "07AAAAA0000A1Z5",
-  "tamperingSigns": false
-}`}
-                     </div>
+                <div className="p-8 space-y-6">
+                  <div className="h-8 w-3/4 bg-slate-100 rounded" />
+                  <div className="h-4 w-1/2 bg-slate-100 rounded" />
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="h-24 bg-blue-50 border border-blue-100 rounded p-4 flex flex-col justify-end">
+                      <div className="h-2 w-full bg-blue-200 rounded"><div className="h-full w-3/4 bg-blue-500 rounded" /></div>
+                    </div>
+                    <div className="h-24 bg-orange-50 border border-orange-100 rounded p-4 flex flex-col justify-end">
+                      <div className="h-2 w-full bg-orange-200 rounded"><div className="h-full w-1/2 bg-orange-500 rounded" /></div>
+                    </div>
                   </div>
-
-                  {/* Gov API Checks */}
-                  <div className="space-y-3">
-                     <div className="flex items-center justify-between bg-slate-800/50 border border-slate-700 p-3 rounded-lg">
-                       <div className="flex items-center gap-3">
-                         <CheckCircle className="w-5 h-5 text-green-500" />
-                         <span className="text-slate-200 text-sm font-medium">Income Tax (PAN)</span>
-                       </div>
-                       <span className="text-xs text-slate-500 font-mono">200 OK</span>
-                     </div>
-                     <div className="flex items-center justify-between bg-slate-800/50 border border-slate-700 p-3 rounded-lg">
-                       <div className="flex items-center gap-3">
-                         <CheckCircle className="w-5 h-5 text-green-500" />
-                         <span className="text-slate-200 text-sm font-medium">MCA Registry</span>
-                       </div>
-                       <span className="text-xs text-slate-500 font-mono">200 OK</span>
-                     </div>
-                     <div className="flex items-center justify-between bg-red-900/20 border border-red-900/50 p-3 rounded-lg">
-                       <div className="flex items-center gap-3">
-                         <XCircle className="w-5 h-5 text-red-500" />
-                         <span className="text-red-200 text-sm font-medium">GeM Blacklist Check</span>
-                       </div>
-                       <span className="text-xs text-red-400 font-mono">FLAGGED</span>
-                     </div>
-                  </div>
-
+                  <div className="h-32 w-full bg-slate-50 border border-slate-100 rounded" />
                 </div>
               </div>
-              
               {/* Floating element */}
-              <div className="absolute -bottom-6 -left-6 bg-slate-900 border border-cyan-800 p-5 shadow-2xl rounded-lg animate-bounce z-20">
+              <div className="absolute -bottom-6 -left-6 bg-white border border-blue-200 p-6 shadow-xl rounded-md animate-bounce">
                 <div className="flex items-center space-x-4">
-                  <div className="h-10 w-10 bg-cyan-950 rounded flex items-center justify-center border border-cyan-800">
-                    <Lock className="h-5 w-5 text-cyan-400" />
+                  <div className="h-12 w-12 bg-blue-100 rounded flex items-center justify-center">
+                    <ShieldCheck className="h-6 w-6 text-blue-700" />
                   </div>
                   <div>
-                    <div className="text-cyan-50 font-bold text-sm">Cryptographic Audit</div>
-                    <div className="text-cyan-400/70 text-xs font-mono mt-1">SHA-256: 0x8F9B...4A21</div>
+                    <div className="text-slate-900 font-bold text-lg">98.4% Accuracy</div>
+                    <div className="text-slate-500 text-sm font-medium">AI Tamper Detection</div>
                   </div>
                 </div>
               </div>
