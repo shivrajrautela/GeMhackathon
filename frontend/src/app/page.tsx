@@ -108,7 +108,7 @@ export default function LandingPage() {
           
           {/* Right Visual Element */}
           <div className="hidden lg:flex justify-end animate-in fade-in duration-1000 delay-300">
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300">
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-in fade-in zoom-in duration-1000 delay-300 -rotate-1 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
               <div className="animate-float w-full h-full relative">
                 <div className="bg-white rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden relative z-10 lg:h-[500px] flex flex-col ring-1 ring-slate-900/5 hover:shadow-2xl transition-shadow duration-500">
                   {/* Browser/Window Header */}
