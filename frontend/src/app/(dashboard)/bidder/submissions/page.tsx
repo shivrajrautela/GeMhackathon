@@ -11,6 +11,19 @@ import {
   Calendar, IndianRupee, Building, Eye, ArrowRight, Loader2
 } from "lucide-react";
 
+interface Bid {
+  id: string;
+  tenderId: string;
+  tenderTitle: string;
+  status: "Under Review" | "Approved" | "Rejected";
+  department: string;
+  value: string;
+  submittedOn: string;
+  deadline: string;
+  aiScore: number;
+  flags: string[];
+}
+
 const statusConfig: Record<string, { color: string; icon: React.ReactNode }> = {
   "Under Review": {
     color: "bg-amber-50 text-amber-800 border-amber-200",
@@ -27,7 +40,7 @@ const statusConfig: Record<string, { color: string; icon: React.ReactNode }> = {
 };
 
 export default function MySubmissionsPage() {
-  const [bids, setBids] = useState<any[]>([]);
+  const [bids, setBids] = useState<Bid[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +48,7 @@ export default function MySubmissionsPage() {
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
-          const res = await fetch(`http://localhost:5000/api/bids/${user.id}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bids/${user.id}`);
           const json = await res.json();
           if (json.success) {
             setBids(json.data);
