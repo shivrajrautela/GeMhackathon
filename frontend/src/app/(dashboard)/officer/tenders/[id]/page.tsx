@@ -75,8 +75,8 @@ export default function BidReviewPage() {
     const fetchData = async () => {
       try {
         const [tendersRes, bidsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/tenders'),
-          fetch('http://localhost:5000/api/officer/bids')
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids`)
         ]);
         
         const tendersJson = await tendersRes.json();
@@ -125,7 +125,7 @@ export default function BidReviewPage() {
 
     try {
       // 1. Call Backend to Extract, Cross-Check, and Score the bid
-      const res = await fetch(`http://localhost:5000/api/officer/bids/${selectedBidder.id}/verify`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids/${selectedBidder.id}/verify`, {
         method: "POST"
       });
       const json = await res.json();
@@ -638,7 +638,7 @@ export default function BidReviewPage() {
                             className="bg-red-600 hover:bg-red-700 font-bold"
                             onClick={async () => {
                                 setDecisionLoading(true);
-                                await fetch(`http://localhost:5000/api/officer/bids/${verifyResult.id}/decision`, {
+                                await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids/${verifyResult.id}/decision`, {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ decision: 'Rejected' })
@@ -653,7 +653,7 @@ export default function BidReviewPage() {
                             className="bg-green-600 hover:bg-green-700 font-bold"
                             onClick={async () => {
                                 setDecisionLoading(true);
-                                await fetch(`http://localhost:5000/api/officer/bids/${verifyResult.id}/decision`, {
+                                await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids/${verifyResult.id}/decision`, {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ decision: 'Approved' })

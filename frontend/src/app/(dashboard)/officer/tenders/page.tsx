@@ -50,8 +50,8 @@ export default function OfficerTenders() {
     const fetchData = async () => {
       try {
         const [tendersRes, bidsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/tenders'),
-          fetch('http://localhost:5000/api/officer/bids')
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids`)
         ]);
         
         const tendersJson = await tendersRes.json();

@@ -37,7 +37,7 @@ export default function PublicTendersPage() {
   useEffect(() => {
     const fetchPublicTenders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tenders");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`);
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           setTenders(json.data);

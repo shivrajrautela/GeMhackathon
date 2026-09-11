@@ -58,7 +58,7 @@ export default function BidderDirectoryPage() {
   useEffect(() => {
     const fetchBids = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/officer/bids');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids`);
         const json = await res.json();
         
         if (json.success && json.data) {

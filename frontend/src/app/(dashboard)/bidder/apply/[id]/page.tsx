@@ -70,7 +70,7 @@ export default function ApplicationPage() {
           
           if (user) {
             // Send submission record to backend (including PDF base64!)
-            await fetch("http://localhost:5000/api/bids", {
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/bids`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

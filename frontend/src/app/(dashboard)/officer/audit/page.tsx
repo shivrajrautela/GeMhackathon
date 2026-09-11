@@ -61,7 +61,7 @@ export default function AuditLogsPage() {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/officer/audit');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/audit`);
         const json = await res.json();
         if (json.success) setLogs(json.data.reverse()); // newest first
       } catch (err) {

@@ -18,7 +18,7 @@ export default function SubmitBidPage() {
   useEffect(() => {
     const fetchTenders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tenders");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`);
         const json = await res.json();
         if (json.success) {
           const activeTenders = json.data.filter((t: any) => t.status !== 'Closed');

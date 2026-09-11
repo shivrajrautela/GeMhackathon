@@ -7,19 +7,19 @@ export default async function OfficerDashboard() {
   let allTenders = [];
 
   try {
-    const statsRes = await fetch('http://localhost:5000/api/officer/stats', { cache: 'no-store' });
+    const statsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/stats`, { cache: 'no-store' });
     const statsJson = await statsRes.json();
     if (statsJson.success) stats = statsJson.data;
 
-    const bidsRes = await fetch('http://localhost:5000/api/officer/bids', { cache: 'no-store' });
+    const bidsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/bids`, { cache: 'no-store' });
     const bidsJson = await bidsRes.json();
     if (bidsJson.success) allBids = bidsJson.data;
 
-    const auditRes = await fetch('http://localhost:5000/api/officer/audit', { cache: 'no-store' });
+    const auditRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/officer/audit`, { cache: 'no-store' });
     const auditJson = await auditRes.json();
     if (auditJson.success) auditLogs = auditJson.data;
 
-    const tendersRes = await fetch('http://localhost:5000/api/tenders', { cache: 'no-store' });
+    const tendersRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`, { cache: 'no-store' });
     const tendersJson = await tendersRes.json();
     if (tendersJson.success) allTenders = tendersJson.data;
 

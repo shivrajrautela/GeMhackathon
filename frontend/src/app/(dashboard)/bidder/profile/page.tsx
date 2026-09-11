@@ -37,7 +37,7 @@ export default function CompanyProfilePage() {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           setUserId(user.id);
-          const res = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/profile/${user.id}`);
           const json = await res.json();
           if (json.success && json.data) {
             setForm(json.data);
@@ -63,7 +63,7 @@ export default function CompanyProfilePage() {
 
     setSaving(true);
     try {
-      const res = await fetch("http://localhost:5000/api/profile", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/profile`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId, profileData: form }),

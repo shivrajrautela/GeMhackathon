@@ -31,7 +31,7 @@ export default function BidderDashboard() {
         }
 
         // 1. Fetch Profile
-        const profileRes = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+        const profileRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/profile/${user.id}`);
         const profileJson = await profileRes.json();
         let profileCompletion = 0;
         
@@ -51,7 +51,7 @@ export default function BidderDashboard() {
         }
 
         // 2. Fetch User's Bids
-        const bidsRes = await fetch(`http://localhost:5000/api/bids/${user.id}`);
+        const bidsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/bids/${user.id}`);
         const bidsJson = await bidsRes.json();
         let bidsList: any[] = [];
         
@@ -71,7 +71,7 @@ export default function BidderDashboard() {
         });
 
         // 3. Fetch Tenders to show recent open ones
-        const tendersRes = await fetch(`http://localhost:5000/api/tenders`);
+        const tendersRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/tenders`);
         const tendersJson = await tendersRes.json();
         
         if (tendersJson.success) {
