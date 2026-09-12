@@ -29,6 +29,7 @@ export default function RegisterPage() {
       email: formData.email,
       password: formData.password,
       options: {
+        emailRedirectTo: typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : undefined,
         data: {
           full_name: formData.name,
           phone: formData.phone,
@@ -53,7 +54,7 @@ export default function RegisterPage() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: typeof window !== 'undefined' ? `${window.location.origin}/officer/dashboard` : undefined,
+        redirectTo: typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : undefined,
       }
     });
     if (error) setError(error.message);
